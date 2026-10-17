@@ -1,0 +1,40 @@
+{
+  "_how_to_edit": "Each animal is one entry. status is one of: available, reserved, sold. photo is a file name in assets/img (leave empty if none). Lists can be empty; the page then shows a waitlist message.",
+
+  "gampr_parents": [
+    {
+      "name": "Dozer",
+      "role": "Breeding dog",
+      "health": "OFA, CHIC and Embark tested",
+      "link": "https://www.gampr.org/garciabreeder",
+      "photo": ""
+    },
+    {
+      "name": "Riley",
+      "role": "Breeding dog",
+      "health": "OFA, CHIC and Embark tested",
+      "link": "https://www.gampr.org/garciabreeder",
+      "photo": ""
+    },
+    {
+      "name": "Toros",
+      "role": "Breeding dog",
+      "health": "OFA hips, elbows and patellas in progress",
+      "link": "",
+      "photo": ""
+    },
+    {
+      "name": "Athena",
+      "role": "Breeding dog",
+      "health": "OFA hips, elbows and patellas in progress",
+      "link": "",
+      "photo": ""
+    }
+  ],
+
+  "gampr_litters": [],
+
+  "goats": [],
+
+  "sheep": []
+}
