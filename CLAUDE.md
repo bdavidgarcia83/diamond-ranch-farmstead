@@ -7,5 +7,5 @@
 - Owner's Terms page has `<mark class="todo">` items awaiting their answers; never invent policy (deposit amounts, guarantees).
 - Never state facts about the animals (sex, ages, prices, test results) the owners haven't given.
 - Design: colors come from the ranch logo (assets/img/logo-*.webp, source in Dropbox /Personal/Diamond Ranch Farmstead/Website/drflofo.jpg): sand bg, dark wood ink, rust accent. Rokkitt + Libre Franklin. Logo appears in header, hero, footer, favicon and og-image. Ranch silhouettes (assets/img/sil/, used as CSS masks via .sil classes) mark the home animal rows and walk along the footer ridge. Avoid cards/gradients.
-- Ranch life page (/ranch-life/, in nav): pets and barn_cats in animals.json; photos and personality text still to come from the owners.
+- Ranch life page (/ranch-life/, in nav): pets, horses and barn_cats in animals.json; photos and personality text still to come from the owners.
 - Commit as small, plainly described changes; push to `main` publishes.

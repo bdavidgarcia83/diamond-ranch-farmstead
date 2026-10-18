@@ -298,9 +298,9 @@ def render_home_next():
             f'<a href="{url("/gampr-puppies/")}#apply">Join the waitlist</a></span></p>')
 
 
-def render_pets():
+def render_pets(key="pets"):
     rows = []
-    for pet in DATA.get("pets", []):
+    for pet in DATA.get(key, []):
         photos = pet.get("photos") or []
         main = photo_or_mark(photos[0], photos[0].get("alt", pet["name"])) if photos else photo_or_mark({}, pet["name"])
         extra = ""
@@ -310,7 +310,9 @@ def render_pets():
                 for ph in photos[1:]) + "</ul>"
         about = f'<p>{esc(pet["about"])}</p>' if pet.get("about") else ""
         rows.append(f'<li class="pet"><div class="pet-photo">{main}</div><div class="pet-text">'
-                    f'<h3>{esc(pet["name"])}</h3><p class="pet-kind">{esc(pet.get("kind"))}</p>{about}{extra}</div></li>')
+                    f'<h3>{esc(pet["name"])}</h3>'
+                    + (f'<p class="pet-kind">{esc(pet["kind"])}</p>' if pet.get("kind") else "")
+                    + f'{about}{extra}</div></li>')
     return f'<ul class="pets">{"".join(rows)}</ul>'
 
 
@@ -328,6 +330,7 @@ def render_cats():
 
 RENDERERS = {
     "pets": render_pets,
+    "horses": lambda: render_pets("horses"),
     "cats": render_cats,
     "home-next": render_home_next,
     "gallery": render_gallery,

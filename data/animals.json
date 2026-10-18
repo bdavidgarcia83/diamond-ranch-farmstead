@@ -1,5 +1,5 @@
 {
-  "_how_to_edit": "Each animal is one entry. status is one of: available, reserved, sold. photo is a file name in assets/img (leave empty if none). Lists can be empty; the page then shows a waitlist message. past_litter_photos is a gallery of puppies from earlier litters: each has a photo (file name in assets/img) and alt (a short description). planned_litters lists upcoming breedings: sire and dam must match names in gampr_parents; timing (e.g. \"Expected spring 2027\") and note are optional. Empty the list once the litter is born. Each gampr_parents entry also drives that dog's own page at /dogs/<slug>/: registered_name, born (YYYY-MM-DD), summary, health, embark/ofa/agca links (leave empty to hide), gallery, and pedigree (sire/dam, each with name, optional reg, and their own sire/dam). pets (Ranch life page): name, kind, about (optional), photos (list of {photo, alt}; first one is the main photo). barn_cats: about (optional) and photos.",
+  "_how_to_edit": "Each animal is one entry. status is one of: available, reserved, sold. photo is a file name in assets/img (leave empty if none). Lists can be empty; the page then shows a waitlist message. past_litter_photos is a gallery of puppies from earlier litters: each has a photo (file name in assets/img) and alt (a short description). planned_litters lists upcoming breedings: sire and dam must match names in gampr_parents; timing (e.g. \"Expected spring 2027\") and note are optional. Empty the list once the litter is born. Each gampr_parents entry also drives that dog's own page at /dogs/<slug>/: registered_name, born (YYYY-MM-DD), summary, health, embark/ofa/agca links (leave empty to hide), gallery, and pedigree (sire/dam, each with name, optional reg, and their own sire/dam). pets and horses (Ranch life page): name, kind, about (optional), photos (list of {photo, alt}; first one is the main photo). barn_cats: about (optional) and photos.",
   "gampr_parents": [
     {
       "name": "Dozer",
@@ -457,6 +457,20 @@
     {
       "name": "Nova",
       "kind": "French Bulldog",
+      "about": "",
+      "photos": []
+    }
+  ],
+  "horses": [
+    {
+      "name": "Dakota",
+      "kind": "",
+      "about": "",
+      "photos": []
+    },
+    {
+      "name": "Raspberry",
+      "kind": "",
       "about": "",
       "photos": []
     }
