@@ -116,14 +116,52 @@ def render_gallery():
             f'<ul class="gallery">{items}</ul></section>')
 
 
+def render_planned():
+    parents = {d["name"]: d for d in DATA.get("gampr_parents", [])}
+    blocks = []
+    for plan in DATA.get("planned_litters", []):
+        pair = []
+        for role, key in (("Sire", "sire"), ("Dam", "dam")):
+            dog = parents.get(plan[key], {"name": plan[key]})
+            pair.append(f'<figure>{photo_or_mark(dog, dog["name"] + ", Armenian Gampr")}'
+                        f'<figcaption><strong>{esc(dog["name"])}</strong> {role}</figcaption></figure>')
+        timing = f'<p class="planned-timing">{esc(plan["timing"])}</p>' if plan.get("timing") else ""
+        note = f'<p>{esc(plan["note"])}</p>' if plan.get("note") else ""
+        blocks.append(
+            f'<div class="planned"><div class="planned-pair">{pair[0]}<span class="planned-x" aria-hidden="true">×</span>{pair[1]}</div>'
+            f'<div class="planned-text"><h3>Planned litter: {esc(plan["sire"])} × {esc(plan["dam"])}</h3>{timing}{note}'
+            f'<p>Meet both parents in Our breeding dogs below. Send an application to get on the waitlist for this litter, '
+            f'and we\'ll contact you when puppies are on the way.</p>'
+            f'<p><a class="button" href="#apply">Join the waitlist</a></p></div></div>')
+    return "".join(blocks)
+
+
+def render_litters():
+    if DATA.get("gampr_litters") or not DATA.get("planned_litters"):
+        return render_listing(
+            "gampr_litters",
+            "No litter is on the ground right now. Send an application below to join the waitlist "
+            "for our next litter, and we'll contact you when puppies are expected.",
+            "Gampr litter") + render_planned()
+    return render_planned()
+
+
+def render_home_next():
+    plans = DATA.get("planned_litters", [])
+    if not plans:
+        return ""
+    plan = plans[0]
+    timing = f' {esc(plan["timing"])}.' if plan.get("timing") else ""
+    return (f'<p class="next-litter"><span class="sil sil-gampr" aria-hidden="true"></span>'
+            f'<span>Next planned litter: <strong>{esc(plan["sire"])} × {esc(plan["dam"])}</strong>.{timing} '
+            f'<a href="{url("/gampr-puppies/")}#apply">Join the waitlist</a></span></p>')
+
+
 RENDERERS = {
+    "home-next": render_home_next,
     "gallery": render_gallery,
     "parents": render_parents,
-    "litters": lambda: render_listing(
-        "gampr_litters",
-        "No litter is on the ground right now. Send an application below to join the waitlist "
-        "for our next litter, and we'll contact you when puppies are expected.",
-        "Gampr litter"),
+    "litters": render_litters,
     "goats": lambda: render_listing(
         "goats",
         "No goats are listed right now. Ask about upcoming kids and we'll let you know what's coming.",

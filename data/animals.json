@@ -1,5 +1,5 @@
 {
-  "_how_to_edit": "Each animal is one entry. status is one of: available, reserved, sold. photo is a file name in assets/img (leave empty if none). Lists can be empty; the page then shows a waitlist message. past_litter_photos is a gallery of puppies from earlier litters: each has a photo (file name in assets/img) and alt (a short description).",
+  "_how_to_edit": "Each animal is one entry. status is one of: available, reserved, sold. photo is a file name in assets/img (leave empty if none). Lists can be empty; the page then shows a waitlist message. past_litter_photos is a gallery of puppies from earlier litters: each has a photo (file name in assets/img) and alt (a short description). planned_litters lists upcoming breedings: sire and dam must match names in gampr_parents; timing (e.g. \"Expected spring 2027\") and note are optional. Empty the list once the litter is born.",
   "gampr_parents": [
     {
       "name": "Dozer",
@@ -31,6 +31,14 @@
     }
   ],
   "gampr_litters": [],
+  "planned_litters": [
+    {
+      "sire": "Dozer",
+      "dam": "Riley",
+      "timing": "",
+      "note": ""
+    }
+  ],
   "past_litter_photos": [
     {
       "photo": "litter-dozer-pups.webp",

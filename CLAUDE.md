@@ -1,7 +1,7 @@
 # Notes for maintaining this site
 
 - Static site, no dependencies. `python3 build.py` renders `src/pages/*.html` through the layout in `build.py` into `_site/`. The GitHub Action passes the Pages base path as `SITE_BASE`; always link with `{{base}}` in page sources.
-- Animals: `data/animals.json` only. Listing pages show an empty-state message when a list is empty.
+- Animals: `data/animals.json` only. Listing pages show an empty-state message when a list is empty. `planned_litters` drives the planned-litter block on the Gampr page and the "Next planned litter" line on the home page.
 - Forms post to FormSubmit (formsubmit.co) at the farm email; no key needed. The first submission triggers an activation email to that inbox.
 - `site.json` `"preview": true` adds a banner, `noindex` and a disallow-all robots.txt. Set false at launch.
 - Owner's Terms page has `<mark class="todo">` items awaiting their answers; never invent policy (deposit amounts, guarantees).
