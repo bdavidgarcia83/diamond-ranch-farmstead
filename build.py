@@ -107,8 +107,8 @@ def render_gallery():
     if not photos:
         return ""
     items = "".join(
-        f'<li><img src="{url("/assets/img/" + esc(f))}" alt="Armenian Gampr puppy from a past Diamond Ranch Farmstead litter" '
-        f'loading="lazy" width="900" height="675"></li>' for f in photos)
+        f'<li><img src="{url("/assets/img/" + esc(p["photo"]))}" alt="{esc(p.get("alt"))}" '
+        f'loading="lazy" width="900" height="675"></li>' for p in photos)
     return (f'<section class="band"><h2>Puppies from our last litter</h2>'
             f'<p>A few of the pups from our most recent litter.</p>'
             f'<ul class="gallery">{items}</ul></section>')

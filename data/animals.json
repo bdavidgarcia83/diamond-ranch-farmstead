@@ -1,5 +1,5 @@
 {
-  "_how_to_edit": "Each animal is one entry. status is one of: available, reserved, sold. photo is a file name in assets/img (leave empty if none). Lists can be empty; the page then shows a waitlist message. past_litter_photos is a gallery of puppies from earlier litters (file names in assets/img).",
+  "_how_to_edit": "Each animal is one entry. status is one of: available, reserved, sold. photo is a file name in assets/img (leave empty if none). Lists can be empty; the page then shows a waitlist message. past_litter_photos is a gallery of puppies from earlier litters: each has a photo (file name in assets/img) and alt (a short description).",
   "gampr_parents": [
     {
       "name": "Dozer",
@@ -13,14 +13,14 @@
       "role": "Breeding dog",
       "health": "OFA, CHIC and Embark tested",
       "link": "https://www.gampr.org/garciabreeder",
-      "photo": ""
+      "photo": "riley.webp"
     },
     {
       "name": "Toros",
       "role": "Breeding dog",
       "health": "OFA hips, elbows and patellas in progress",
       "link": "",
-      "photo": ""
+      "photo": "toros.webp"
     },
     {
       "name": "Athena",
@@ -32,11 +32,42 @@
   ],
   "gampr_litters": [],
   "past_litter_photos": [
-    "litter-1.webp",
-    "litter-2.webp",
-    "litter-3.webp",
-    "litter-4.webp",
-    "litter-5.webp"
+    {
+      "photo": "litter-dozer-pups.webp",
+      "alt": "Dozer lying in the grass with three of his puppies"
+    },
+    {
+      "photo": "litter-1.webp",
+      "alt": "Armenian Gampr puppy from our last litter"
+    },
+    {
+      "photo": "litter-2.webp",
+      "alt": "Armenian Gampr puppy from our last litter"
+    },
+    {
+      "photo": "litter-3.webp",
+      "alt": "Armenian Gampr puppy from our last litter"
+    },
+    {
+      "photo": "litter-4.webp",
+      "alt": "Armenian Gampr puppy from our last litter"
+    },
+    {
+      "photo": "litter-5.webp",
+      "alt": "Armenian Gampr puppy from our last litter"
+    },
+    {
+      "photo": "litter-6.webp",
+      "alt": "Armenian Gampr puppies from our last litter"
+    },
+    {
+      "photo": "litter-7.webp",
+      "alt": "Armenian Gampr puppies from our last litter"
+    },
+    {
+      "photo": "litter-8.webp",
+      "alt": "Armenian Gampr puppies from our last litter"
+    }
   ],
   "goats": [],
   "sheep": []
