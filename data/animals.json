@@ -185,8 +185,8 @@
         }
       ],
       "litter": {
-        "title": "Riley's first litter",
-        "text": "These are the puppies from Riley's first litter, from their first weeks to growing up on the ranch.",
+        "title": "Riley's first litter, sired by Dozer",
+        "text": "These are the puppies from Riley and Dozer's first litter, from their first weeks to growing up on the ranch.",
         "videos": [
           {
             "src": "video/litter-weeks.mp4",
@@ -591,7 +591,12 @@
       "name": "Nilla",
       "kind": "Crossbred livestock guardian dog",
       "about": "Nilla is our jack-of-all-trades guardian. We adopted her, and she's fit right into our program. We can pair her with any of our dogs and livestock, and she goes out with the males when they're in the pasture protecting the sheep or goats. She's good with all the puppies and helps train the young dogs. She had one litter and has since been spayed. She and Riley don't always get along, but they'll tolerate each other and work together when we ask them to.",
-      "photos": []
+      "photos": [
+        {
+          "photo": "pets/nilla.webp",
+          "alt": "Nilla, our white crossbred guardian, walking along the fence line"
+        }
+      ]
     }
   ]
 }

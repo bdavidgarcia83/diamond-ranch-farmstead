@@ -278,7 +278,7 @@ def render_gallery():
         f'<li><img src="{url("/assets/img/" + esc(p["photo"]))}" alt="{esc(p.get("alt"))}" '
         f'loading="lazy" width="900" height="675"></li>' for p in photos)
     return (f'<section class="band"><h2>Puppies from Riley\'s first litter</h2>'
-            f'<p>A few of the pups from our most recent litter. <a href="{url("/dogs/riley/")}#litter">See videos of the litter on Riley\'s page</a>.</p>'
+            f'<p>A few of the pups from Riley and Dozer\'s first litter, the same pairing planned for spring 2027. <a href="{url("/dogs/riley/")}#litter">See videos of the litter on Riley\'s page</a>.</p>'
             f'<ul class="gallery">{items}</ul></section>')
 
 
