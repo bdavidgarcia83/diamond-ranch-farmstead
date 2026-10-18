@@ -97,12 +97,25 @@ main > section { max-width: var(--wrap); margin: 0 auto; padding: 3rem 1rem; }
   padding: 1.75rem 0;
 }
 .animal-row:last-child { border-bottom: 1px solid var(--line); }
-.animal-row-text { display: grid; grid-template-columns: 1fr 2fr auto; gap: 0.5rem 2rem; align-items: baseline; }
+.animal-row-text { display: grid; grid-template-columns: 5.5rem 1fr 2fr auto; gap: 0.5rem 2rem; align-items: center; }
 .animal-row h3 { margin: 0; font-size: 1.9rem; }
 .animal-row p { margin: 0; color: var(--slate); max-width: 34em; }
 .row-link { font-weight: 600; color: var(--ochre); white-space: nowrap; }
-.animal-row:hover h3 { color: var(--ochre); }
-@media (max-width: 48rem) { .animal-row-text { grid-template-columns: 1fr; } }
+.animal-row:hover h3, .animal-row:hover .sil { color: var(--ochre); }
+
+/* Silhouettes: the ranch's own animal cutouts, used as masks so they take the text color */
+.sil { display: block; background-color: currentColor; -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; }
+.sil-gampr   { --m: url("img/sil/gampr.png");   aspect-ratio: 276 / 192; }
+.sil-doe     { --m: url("img/sil/doe.png");     aspect-ratio: 295 / 242; }
+.sil-billy   { --m: url("img/sil/billy.png");   aspect-ratio: 286 / 258; }
+.sil-sheep   { --m: url("img/sil/sheep.png");   aspect-ratio: 176 / 160; }
+.sil-hen     { --m: url("img/sil/hen.png");     aspect-ratio: 171 / 235; }
+.sil-rooster { --m: url("img/sil/rooster.png"); aspect-ratio: 220 / 216; }
+.animal-row .sil { width: 100%; color: var(--ink); transition: color 0.15s; }
+@media (max-width: 48rem) {
+  .animal-row-text { grid-template-columns: 4.5rem 1fr; gap: 0.35rem 1.25rem; align-items: start; }
+  .animal-row-text .sil { grid-row: span 3; margin-top: 0.3rem; }
+}
 
 /* Steps */
 .steps ol { list-style: none; counter-reset: step; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 2rem; }
@@ -172,7 +185,25 @@ mark.todo { background: #f3dfb6; color: var(--ink); padding: 0 0.2em; }
 .contact-line, .site-footer a { overflow-wrap: anywhere; }
 
 /* Footer */
-.site-footer { background: var(--ink); color: var(--sky); margin-top: 3rem; position: relative; }
+.site-footer { background: var(--ink); color: var(--sky); margin-top: 5rem; position: relative; }
+.ridge { fill: var(--slate) !important; }
+.herd {
+  position: absolute; bottom: calc(100% - 2px); left: 50%; transform: translateX(-50%);
+  width: min(var(--wrap), 100%); padding: 0 1rem; z-index: 1;
+  display: flex; align-items: flex-end; gap: 0.6rem; color: var(--ink);
+}
+.herd .herd-gap { flex: 1; }
+.herd .sil-gampr { height: 3.4rem; margin-left: 1.4rem; }
+.herd .sil-billy { height: 3.3rem; }
+.herd .sil-doe { height: 3.1rem; }
+.herd .sil-sheep { height: 2.5rem; }
+.herd .sil-hen { height: 2.1rem; }
+.herd .sil-rooster { height: 2.2rem; }
+@media (max-width: 36rem) {
+  .herd { gap: 0.35rem; }
+  .herd .sil-gampr { height: 2.4rem; margin-left: 0.6rem; } .herd .sil-billy { height: 2.3rem; } .herd .sil-doe { height: 2.2rem; }
+  .herd .sil-sheep { height: 1.8rem; } .herd .sil-hen { height: 1.5rem; } .herd .sil-rooster { height: 1.6rem; }
+}
 .ridge { position: absolute; bottom: 100%; left: 0; width: 100%; height: 3.5rem; fill: var(--ink); display: block; }
 .footer-inner { max-width: var(--wrap); margin: 0 auto; padding: 2.5rem 1rem 1rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1.5rem 3rem; }
 .site-footer a { color: var(--paper); text-decoration-color: var(--ochre); }

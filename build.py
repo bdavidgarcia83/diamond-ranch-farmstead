@@ -223,6 +223,12 @@ def layout(meta, body):
 {body}
 </main>
 <footer class="site-footer">
+  <div class="herd" aria-hidden="true">
+    <span class="sil sil-rooster"></span><span class="sil sil-hen"></span>
+    <span class="herd-gap"></span>
+    <span class="sil sil-sheep"></span><span class="sil sil-doe"></span><span class="sil sil-billy"></span>
+    <span class="sil sil-gampr"></span>
+  </div>
   <svg class="ridge" viewBox="0 0 1200 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 90V62l70-14 60 10 90-30 55 16 70-28 45 12 85-26 60 22 50-8 80 30 70-18 95 20 60-12 85 22 60-16 75 18 90-8V90Z"/></svg>
   <div class="footer-inner">
     <div>
