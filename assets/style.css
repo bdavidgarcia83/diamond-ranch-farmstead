@@ -209,7 +209,10 @@ mark.todo { background: #f3dfb6; color: var(--ink); padding: 0 0.2em; }
 .stop > p { max-width: 38em; color: var(--slate); }
 .stop-photos { list-style: none; margin: 1rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .stop-photos img { height: 15rem; width: auto; max-width: 100%; object-fit: cover; border-radius: 3px; display: block; }
-.stop-video { display: block; margin-top: 1rem; height: 26rem; max-width: 100%; border-radius: 3px; background: var(--ink); }
+.stop-videos { display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: 0.75rem; margin-top: 1rem; max-width: 52rem; }
+.stop-videos figure { margin: 0; }
+.stop-videos video { width: 100%; aspect-ratio: 16 / 9; display: block; border-radius: 3px; background: var(--ink); }
+.stop-videos figcaption { font-size: 0.9rem; color: var(--muted); margin-top: 0.35rem; }
 @media (max-width: 40rem) {
   .stops::before { left: 0.9rem; }
   .stop { padding-left: 2.75rem; }
@@ -218,7 +221,7 @@ mark.todo { background: #f3dfb6; color: var(--ink); padding: 0 0.2em; }
   .stop-photos img { height: 12rem; width: 100%; }
   .stop-photos li:only-child { grid-column: span 2; }
   .stop-photos li:only-child img { height: auto; max-height: 24rem; }
-  .stop-video { height: auto; width: 100%; max-height: 32rem; }
+  .stop-videos { grid-template-columns: 1fr; }
 }
 
 /* Pedigree: parents, grandparents, great-grandparents as a bracket */

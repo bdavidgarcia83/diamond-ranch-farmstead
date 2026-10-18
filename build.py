@@ -126,11 +126,13 @@ def render_journey(dog):
             media = '<ul class="stop-photos">' + "".join(
                 f'<li><img src="{url("/assets/img/" + esc(ph["photo"]))}" alt="{esc(ph.get("alt"))}" loading="lazy"></li>'
                 for ph in stop["photos"]) + "</ul>"
-        if stop.get("video"):
-            v = stop["video"]
-            media += (f'<video class="stop-video" controls playsinline preload="none" '
-                      f'poster="{url("/assets/img/" + esc(v["poster"]))}" aria-label="{esc(v.get("label"))}">'
-                      f'<source src="{url("/assets/" + esc(v["src"]))}" type="video/mp4"></video>')
+        vids = stop.get("videos") or ([stop["video"]] if stop.get("video") else [])
+        if vids:
+            media += '<div class="stop-videos">' + "".join(
+                f'<figure><video controls playsinline preload="none" '
+                f'poster="{url("/assets/img/" + esc(v["poster"]))}" aria-label="{esc(v.get("caption") or v.get("label"))}">'
+                f'<source src="{url("/assets/" + esc(v["src"]))}" type="video/mp4"></video>'
+                f'<figcaption>{esc(v.get("caption", ""))}</figcaption></figure>' for v in vids) + "</div>"
         items.append(
             f'<li class="stop"><span class="stop-num" aria-hidden="true">{i}</span>'
             f'<p class="stop-place">{esc(stop.get("place"))}</p><h3>{esc(stop.get("title"))}</h3>'

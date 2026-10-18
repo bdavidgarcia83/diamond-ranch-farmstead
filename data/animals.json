@@ -292,6 +292,10 @@
             {
               "photo": "athena/waiting.webp",
               "alt": "Athena in a courtyard in the village, waiting for her flight"
+            },
+            {
+              "photo": "athena/vet.webp",
+              "alt": "Athena on the exam table at the vet in Armenia"
             }
           ]
         },
@@ -327,8 +331,8 @@
         },
         {
           "place": "Dallas, Texas",
-          "title": "Picked up and headed home",
-          "text": "From Mississippi she went on to Dallas, Texas, where we picked her up and brought her home.",
+          "title": "Picked up in Texas",
+          "text": "From Mississippi she went on to Dallas, Texas, where we picked her up.",
           "photos": [
             {
               "photo": "athena/texas.webp",
@@ -345,14 +349,44 @@
           ]
         },
         {
+          "place": "Texas to Arizona",
+          "title": "The drive home",
+          "text": "On the drive from Texas to Arizona she got leash walks along the way and spent a night in the stock trailer.",
+          "videos": [
+            {
+              "src": "video/athena-road.mp4",
+              "poster": "athena/reel-road.webp",
+              "caption": "Walks on the road from Texas to Arizona"
+            },
+            {
+              "src": "video/athena-trailer.mp4",
+              "poster": "athena/reel-trailer.webp",
+              "caption": "Overnight in the stock trailer"
+            }
+          ]
+        },
+        {
           "place": "Hereford, Arizona",
           "title": "Home on the ranch",
-          "text": "Athena now lives with us on the ranch, learning daily life with the other Gamprs and the rest of the animals.",
-          "video": {
-            "src": "video/athena-home.mp4",
-            "poster": "athena/video-poster.webp",
-            "label": "Athena relaxing at home in Hereford"
-          }
+          "text": "When she arrived in Hereford she explored her new home and met the other Gamprs through the fence. Now she's learning daily life on the ranch.",
+          "photos": [
+            {
+              "photo": "athena/newhome.webp",
+              "alt": "Athena inside her new home in Hereford"
+            }
+          ],
+          "videos": [
+            {
+              "src": "video/athena-arrival.mp4",
+              "poster": "athena/reel-arrival.webp",
+              "caption": "Just arrived in Hereford"
+            },
+            {
+              "src": "video/athena-meeting.mp4",
+              "poster": "athena/reel-meeting.webp",
+              "caption": "Meeting the other Gamprs"
+            }
+          ]
         }
       ],
       "journey_intro": "From a sheep camp in the Armenian mountains to our ranch in Hereford, Arizona."
