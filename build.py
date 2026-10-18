@@ -56,14 +56,126 @@ def status_tag(item):
 def render_parents():
     rows = []
     for dog in DATA.get("gampr_parents", []):
-        health = esc(dog.get("health"))
-        if dog.get("link"):
-            health = f'<a href="{esc(dog["link"])}">{health}</a>'
         rows.append(
-            f'<li class="animal">{photo_or_mark(dog, dog["name"] + ", Armenian Gampr")}'
+            f'<li class="animal"><a class="animal-link" href="{url("/dogs/" + dog["slug"] + "/")}">'
+            f'{photo_or_mark(dog, dog["name"] + ", Armenian Gampr")}'
             f'<div class="animal-text"><h3>{esc(dog["name"])}</h3>'
-            f'<p>{health}</p></div></li>')
+            f'<p>{esc(dog.get("health"))}</p><span class="row-link">Meet {esc(dog["name"])}</span></div></a></li>')
     return f'<ul class="animal-grid">{"".join(rows)}</ul>'
+
+
+def fmt_date(iso):
+    if not iso:
+        return ""
+    y, m, d = (int(x) for x in iso.split("-"))
+    months = ["January", "February", "March", "April", "May", "June", "July",
+              "August", "September", "October", "November", "December"]
+    return f"{months[m - 1]} {d}, {y}"
+
+
+def pedigree_cells(node, gen, row, cells, max_gen=3):
+    """Lay a pedigree out on a grid: gen 1..3 columns, 8 rows. Parent spans 4, grandparent 2."""
+    span = 2 ** (max_gen - gen)
+    role = "Sire" if (row // span) % 2 == 0 else "Dam"
+    if node:
+        reg = f'<span class="ped-reg">{esc(node["reg"])}</span>' if node.get("reg") else ""
+        inner = f'<span class="ped-role">{role}</span><span class="ped-name">{esc(node["name"])}</span>{reg}'
+        cls = "ped-cell"
+    else:
+        inner = ""
+        cls = "ped-cell ped-empty"
+    cells.append(f'<div class="{cls}" style="grid-column:{gen};grid-row:{row + 1} / span {span}">{inner}</div>')
+    if gen < max_gen:
+        half = span // 2
+        pedigree_cells((node or {}).get("sire"), gen + 1, row, cells, max_gen)
+        pedigree_cells((node or {}).get("dam"), gen + 1, row + half, cells, max_gen)
+
+
+def render_pedigree(ped):
+    if not any((ped.get(k) or {}).get("sire") or (ped.get(k) or {}).get("dam") for k in ("sire", "dam")):
+        rows = []
+        for role in ("sire", "dam"):
+            node = ped.get(role)
+            if node:
+                reg = f'<span class="ped-reg">{esc(node["reg"])}</span>' if node.get("reg") else ""
+                rows.append(f'<div class="ped-cell ped-parent"><span class="ped-role">{role.title()}</span>'
+                            f'<span class="ped-name">{esc(node["name"])}</span>{reg}</div>')
+        return f'<div class="ped-parents">{"".join(rows)}</div>'
+    cells = []
+    pedigree_cells(ped.get("sire"), 1, 0, cells)
+    pedigree_cells(ped.get("dam"), 1, 4, cells)
+    head = ('<div class="ped-head" style="grid-column:1">Parents</div>'
+            '<div class="ped-head" style="grid-column:2">Grandparents</div>'
+            '<div class="ped-head" style="grid-column:3">Great-grandparents</div>')
+    return f'<div class="pedigree" role="table" aria-label="Pedigree">{head}<div class="ped-grid">{"".join(cells)}</div></div>'
+
+
+def ext_link(href, label):
+    return (f'<a class="ext-link" href="{esc(href)}" target="_blank" rel="noopener noreferrer">'
+            f'{label}<span class="visually-hidden"> (opens in a new window)</span></a>')
+
+
+def dog_page(dog):
+    name = dog["name"]
+    facts = [("Registered name", esc(dog.get("registered_name"))),
+             ("AGCA registration", esc(dog.get("reg"))),
+             ("Sex", esc(dog.get("sex"))),
+             ("Born", fmt_date(dog.get("born"))),
+             ("Bred by", esc(dog.get("bred_by")))]
+    facts_html = "".join(f"<dt>{k}</dt><dd>{v}</dd>" for k, v in facts if v)
+    links = []
+    if dog.get("embark"):
+        links.append(ext_link(dog["embark"], "Embark DNA profile"))
+    if dog.get("ofa"):
+        links.append(ext_link(dog["ofa"], "OFA health records"))
+    if dog.get("agca"):
+        links.append(ext_link(dog["agca"], "Breeder profile on Gampr.org"))
+    links_html = f'<div class="ext-links">{"".join(links)}</div>' if links else ""
+    gallery = dog.get("gallery") or []
+    gal_html = ""
+    if gallery:
+        imgs = "".join(
+            f'<li><img src="{url("/assets/img/" + esc(g["photo"]))}" alt="{esc(g.get("alt"))}" '
+            f'loading="lazy" width="1200" height="900"></li>' for g in gallery)
+        gal_html = f'<ul class="dog-gallery count-{min(len(gallery), 3)}">{imgs}</ul>'
+    ped = dog.get("pedigree") or {}
+    ped_note = ""
+    if not any((ped.get(k) or {}).get("sire") for k in ("sire", "dam")):
+        ped_note = '<p class="ped-note">Her registration lists her parents only.</p>' if dog.get("sex") == "Female" \
+            else '<p class="ped-note">His registration lists his parents only.</p>'
+    body = f'''
+<nav class="crumbs" aria-label="Breadcrumb"><a href="{url("/gampr-puppies/")}">Gampr puppies</a> <span aria-hidden="true">/</span> {esc(name)}</nav>
+<section class="page-head dog-head">
+  <h1>{esc(name)}</h1>
+  <p class="dog-regname">{esc(dog.get("registered_name"))}</p>
+  <p class="lede">{esc(dog.get("summary"))}</p>
+</section>
+<section class="band dog-photos">
+  {gal_html}
+</section>
+<section class="band two-col dog-info">
+  <div>
+    <h2>Registration</h2>
+    <dl class="facts">{facts_html}</dl>
+  </div>
+  <div>
+    <h2>Health testing</h2>
+    <p>{esc(dog.get("health"))}</p>
+    {links_html}
+  </div>
+</section>
+<section class="band">
+  <h2>Pedigree</h2>
+  {ped_note}
+  {render_pedigree(ped)}
+</section>
+<section class="band dog-cta">
+  <p>Interested in a puppy from our program? <a class="button" href="{url("/gampr-puppies/")}#apply">Send a puppy application</a></p>
+</section>'''
+    meta = {"title": f"{name}, Armenian Gampr",
+            "description": f"{name} ({dog.get('registered_name')}), an Armenian Gampr in the Diamond Ranch Farmstead breeding program in Hereford, Arizona. Photos, pedigree and health testing.",
+            "path": f"/dogs/{dog['slug']}/", "slug": "dog", "section": "/gampr-puppies/"}
+    return meta, body
 
 
 def render_listing(key, empty_message, kind):
@@ -207,7 +319,7 @@ def layout(meta, body):
     title = meta["title"] if path == "/" else f'{meta["title"]} | {SITE["name"]}'
     current = ' aria-current="page"'
     nav = "".join(
-        f'<li><a href="{url(p)}"{current if p == path else ""}>{label}</a></li>'
+        f'<li><a href="{url(p)}"{current if p == meta.get("section", path) else ""}>{label}</a></li>'
         for p, label in NAV)
     robots = '<meta name="robots" content="noindex">' if SITE.get("preview") else ""
     banner = ('<div class="preview-banner">Preview of the new site. Not live yet.</div>'
@@ -314,6 +426,12 @@ def main():
                 pages.append(meta["path"])
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(page_html.replace('href=""', 'href="#"'))
+    for dog in DATA.get("gampr_parents", []):
+        meta, body = dog_page(dog)
+        target = OUT / meta["path"].strip("/") / "index.html"
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(layout(meta, body))
+        pages.append(meta["path"])
     today = date.today().isoformat()
     sitemap = "".join(f"<url><loc>{SITE['url']}{p}</loc><lastmod>{today}</lastmod></url>" for p in pages)
     (OUT / "sitemap.xml").write_text(

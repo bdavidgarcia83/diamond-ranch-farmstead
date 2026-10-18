@@ -1,7 +1,7 @@
 # Notes for maintaining this site
 
 - Static site, no dependencies. `python3 build.py` renders `src/pages/*.html` through the layout in `build.py` into `_site/`. The GitHub Action passes the Pages base path as `SITE_BASE`; always link with `{{base}}` in page sources.
-- Animals: `data/animals.json` only. Listing pages show an empty-state message when a list is empty. `planned_litters` drives the planned-litter block on the Gampr page and the "Next planned litter" line on the home page.
+- Animals: `data/animals.json` only. Each gampr_parents entry generates /dogs/<slug>/ (gallery, summary, registration facts, Embark/OFA/Gampr.org links in a new window, 3-generation pedigree from the AGCA certificates). Dog cards on the Gampr page link only to these pages, never off-site. Toros and Athena have no OFA link yet: the AGCA profile shows Riley's OFA number on their entries. Listing pages show an empty-state message when a list is empty. `planned_litters` drives the planned-litter block on the Gampr page and the "Next planned litter" line on the home page.
 - Forms post to FormSubmit (formsubmit.co) at the farm email; no key needed. The first submission triggers an activation email to that inbox.
 - `site.json` `"preview": true` adds a banner, `noindex` and a disallow-all robots.txt. Set false at launch.
 - Owner's Terms page has `<mark class="todo">` items awaiting their answers; never invent policy (deposit amounts, guarantees).

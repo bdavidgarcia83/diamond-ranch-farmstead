@@ -1,32 +1,249 @@
 {
-  "_how_to_edit": "Each animal is one entry. status is one of: available, reserved, sold. photo is a file name in assets/img (leave empty if none). Lists can be empty; the page then shows a waitlist message. past_litter_photos is a gallery of puppies from earlier litters: each has a photo (file name in assets/img) and alt (a short description). planned_litters lists upcoming breedings: sire and dam must match names in gampr_parents; timing (e.g. \"Expected spring 2027\") and note are optional. Empty the list once the litter is born.",
+  "_how_to_edit": "Each animal is one entry. status is one of: available, reserved, sold. photo is a file name in assets/img (leave empty if none). Lists can be empty; the page then shows a waitlist message. past_litter_photos is a gallery of puppies from earlier litters: each has a photo (file name in assets/img) and alt (a short description). planned_litters lists upcoming breedings: sire and dam must match names in gampr_parents; timing (e.g. \"Expected spring 2027\") and note are optional. Empty the list once the litter is born. Each gampr_parents entry also drives that dog's own page at /dogs/<slug>/: registered_name, born (YYYY-MM-DD), summary, health, embark/ofa/agca links (leave empty to hide), gallery, and pedigree (sire/dam, each with name, optional reg, and their own sire/dam).",
   "gampr_parents": [
     {
       "name": "Dozer",
-      "role": "Breeding dog",
-      "health": "OFA, CHIC and Embark tested",
-      "link": "https://www.gampr.org/garciabreeder",
+      "slug": "dozer",
+      "registered_name": "RivrVue Farm Dozer",
+      "sex": "Male",
+      "born": "2023-02-09",
+      "reg": "020923-04",
+      "bred_by": "Judy Simmons",
+      "summary": "Dozer is one of our breeding males. He was bred by Judy Simmons and is OFA CHIC certified and Embark tested. He sired our last litter and is the sire of our planned spring 2027 litter with Riley.",
+      "health": "OFA CHIC certified · Embark tested",
+      "embark": "https://my.embarkvet.com/dog/dozer1054",
+      "ofa": "https://ofa.org/advanced-search/?appnum=2606898",
+      "agca": "https://www.gampr.org/garciabreeder",
+      "gallery": [
+        {
+          "photo": "dozer.webp",
+          "alt": "Dozer standing in the desert brush"
+        },
+        {
+          "photo": "litter-dozer-pups.webp",
+          "alt": "Dozer lying in the grass with three of his puppies"
+        }
+      ],
+      "pedigree": {
+        "sire": {
+          "name": "Tribble Hill Farm Zorik",
+          "reg": "122820-03",
+          "sire": {
+            "name": "T'Aguhu Uzh Ara of Zorik's Alagyaz",
+            "reg": "070418-01",
+            "sire": {
+              "name": "SAF Zorik's Hska of Alagyaz"
+            },
+            "dam": {
+              "name": "SAF Zorik's Beverrayin of Alagyaz"
+            }
+          },
+          "dam": {
+            "name": "T'Aguhu Uzh Dzmerr of Grigoryan's T't'Ujur",
+            "reg": "112018-01",
+            "sire": {
+              "name": "SAF Spitak Amp of Grigoryan's T't'Ujur"
+            },
+            "dam": {
+              "name": "SAF Mut' Aspet of Grigoryan's T't'Ujur"
+            }
+          }
+        },
+        "dam": {
+          "name": "Tribble Hill Farm Houri of Rivrvue",
+          "reg": "112518-06",
+          "sire": {
+            "name": "Gasparyan's Swinx of Maisyan-Tribble Hill",
+            "reg": "033017-01",
+            "sire": {
+              "name": "Gasparyan's Aslanchik of Maisyan",
+              "reg": "101414-01"
+            },
+            "dam": {
+              "name": "Gasparyan's Tukhik of Maisyan"
+            }
+          },
+          "dam": {
+            "name": "Lil' Hill Hava",
+            "reg": "120116-04",
+            "sire": {
+              "name": "Hovsepyan's Berk of Etchmiadzin",
+              "reg": "091515-01"
+            },
+            "dam": {
+              "name": "Teter of Lil' Hill",
+              "reg": "020713-5"
+            }
+          }
+        }
+      },
       "photo": "dozer.webp"
     },
     {
       "name": "Riley",
-      "role": "Breeding dog",
-      "health": "OFA, CHIC and Embark tested",
-      "link": "https://www.gampr.org/garciabreeder",
+      "slug": "riley",
+      "registered_name": "Tribble Hill Farm Riley of Mrs G's",
+      "sex": "Female",
+      "born": "2021-07-31",
+      "reg": "073121-09",
+      "bred_by": "Tribble Hill Farm",
+      "summary": "Riley is one of our breeding females. She was bred by Tribble Hill Farm and is OFA CHIC certified and Embark tested. She's the dam of our planned spring 2027 litter with Dozer.",
+      "health": "OFA CHIC certified · Embark tested",
+      "embark": "https://my.embarkvet.com/dog/riley5908",
+      "ofa": "https://ofa.org/advanced-search/?appnum=2487034",
+      "agca": "https://www.gampr.org/garciabreeder",
+      "gallery": [
+        {
+          "photo": "riley.webp",
+          "alt": "Riley standing by the fence line"
+        },
+        {
+          "photo": "riley-2.webp",
+          "alt": "Riley sitting in the pasture"
+        }
+      ],
+      "pedigree": {
+        "sire": {
+          "name": "T'Aguhu Uzh Kasagh of Grigoryan's Aragats",
+          "reg": "111119-04",
+          "sire": {
+            "name": "SAF Lerr Panos of Geghama"
+          },
+          "dam": {
+            "name": "SAF Vayri Gazan of Aragats"
+          }
+        },
+        "dam": {
+          "name": "Yezidi's Shushi of Yerevan Edge",
+          "reg": "012919-02",
+          "sire": {
+            "name": "Gasparyan's Yezidi Arjuk of Yerevan",
+            "sire": {
+              "name": "SAF Basho of Yerevan"
+            },
+            "dam": {
+              "name": "SAF Marjik of Yerevan"
+            }
+          },
+          "dam": {
+            "name": "Gasparyan's Yezidi Del of Yerevan",
+            "sire": {
+              "name": "SAF Nadir of Yerevan"
+            },
+            "dam": {
+              "name": "SAF Koto of Yerevan"
+            }
+          }
+        }
+      },
       "photo": "riley.webp"
     },
     {
       "name": "Toros",
-      "role": "Breeding dog",
-      "health": "OFA hips, elbows and patellas in progress",
-      "link": "",
+      "slug": "toros",
+      "registered_name": "Tribble Hill Toros of Diamond Ranch Farmstead",
+      "sex": "Male",
+      "born": "2024-02-27",
+      "reg": "022724-09",
+      "bred_by": "Tribble Hill Farm",
+      "summary": "Toros is our young male, bred by Tribble Hill Farm. He's Embark tested, and his OFA hip, elbow and patella evaluations are in progress.",
+      "health": "Embark tested · OFA hips, elbows and patellas in progress",
+      "embark": "https://app.embarkvet.com/pet/50ed295a-5836-42bc-8ab0-8831640be577/about",
+      "ofa": "",
+      "agca": "https://www.gampr.org/garciabreeder",
+      "gallery": [
+        {
+          "photo": "toros.webp",
+          "alt": "Toros standing in the desert"
+        }
+      ],
+      "pedigree": {
+        "sire": {
+          "name": "Muddy Acres Zorik of Tribble Hill Farm",
+          "reg": "112921-02",
+          "sire": {
+            "name": "Tribble Hill Ishkhan of Muddy Acres",
+            "reg": "112518-05",
+            "sire": {
+              "name": "Gasparyan's Swinx of Maisyan-Tribble Hill",
+              "reg": "033017-01"
+            },
+            "dam": {
+              "name": "Lil' Hill Hava",
+              "reg": "120116-04"
+            }
+          },
+          "dam": {
+            "name": "T'Aguhu Uzh Aja of Zorik's Martakert Karabakh",
+            "reg": "070319-04",
+            "sire": {
+              "name": "SAF Zorik's Rembo of Martakert Karabakh"
+            },
+            "dam": {
+              "name": "SAF Zorik's Caxik of Martakert Karabakh"
+            }
+          }
+        },
+        "dam": {
+          "name": "Tribble Hill Farm Parvana",
+          "reg": "052922-01",
+          "sire": {
+            "name": "T'Aguhu Uzh Kasagh of Grigoryan's Aragats",
+            "reg": "111119-04",
+            "sire": {
+              "name": "SAF Lerr Panos of Geghama"
+            },
+            "dam": {
+              "name": "SAF Vayri Gazan of Aragats"
+            }
+          },
+          "dam": {
+            "name": "Tribble Hill Hasmik",
+            "reg": "040318-07",
+            "sire": {
+              "name": "Gasparyan's Swinx of Maisyan-Tribble Hill",
+              "reg": "033017-01"
+            },
+            "dam": {
+              "name": "Lil' Hill Hava",
+              "reg": "120116-04"
+            }
+          }
+        }
+      },
       "photo": "toros.webp"
     },
     {
       "name": "Athena",
-      "role": "Breeding dog",
-      "health": "OFA hips, elbows and patellas in progress",
-      "link": "",
+      "slug": "athena",
+      "registered_name": "T'Aguhu Uzh Zorik's Athena of Grigoryan's Aragats",
+      "sex": "Female",
+      "born": "2025-05-14",
+      "reg": "051425-02",
+      "bred_by": "",
+      "summary": "Athena is our youngest female. She's Embark tested, and her OFA hip, elbow and patella evaluations are in progress.",
+      "health": "Embark tested · OFA hips, elbows and patellas in progress",
+      "embark": "https://app.embarkvet.com/pet/d5b08f59-cc7e-4358-b455-8087a0345c6a/about",
+      "ofa": "",
+      "agca": "https://www.gampr.org/garciabreeder",
+      "gallery": [
+        {
+          "photo": "athena.webp",
+          "alt": "Athena standing in the corral"
+        },
+        {
+          "photo": "athena-2.webp",
+          "alt": "Athena lying on the floor"
+        }
+      ],
+      "pedigree": {
+        "sire": {
+          "name": "SAF Zorik's Kafir of Aragats"
+        },
+        "dam": {
+          "name": "SAF Zorik's Qave of Aragats"
+        }
+      },
       "photo": "athena.webp"
     }
   ],

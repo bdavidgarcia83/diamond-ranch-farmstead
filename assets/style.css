@@ -166,6 +166,64 @@ mark.todo { background: #f3dfb6; color: var(--ink); padding: 0 0.2em; }
   .gallery li:first-child { grid-column: span 2; grid-row: span 2; }
 }
 
+/* Breeding dog cards link to their own pages */
+.animal-link { display: block; text-decoration: none; color: inherit; }
+.animal-link .row-link { display: inline-block; margin-top: 0.35rem; font-size: 0.95rem; }
+.animal-link:hover h3 { color: var(--ochre); }
+.animal-link:hover img { filter: brightness(1.05); }
+
+/* Dog pages */
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.crumbs { max-width: var(--wrap); margin: 0 auto; padding: 1.5rem 1rem 0; font-size: 0.95rem; color: var(--muted); }
+.crumbs a { font-weight: 600; }
+.dog-head { padding-top: 1rem !important; }
+.dog-regname { font-family: var(--display); font-size: clamp(1.25rem, 3vw, 1.6rem); font-weight: 500; color: var(--ochre); margin: -0.2em 0 1rem; }
+.dog-gallery { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; grid-template-columns: 1fr; }
+.dog-gallery img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 3px; display: block; }
+@media (min-width: 40rem) {
+  .dog-gallery.count-2 { grid-template-columns: 1fr 1fr; }
+  .dog-gallery.count-3 { grid-template-columns: 2fr 1fr; grid-template-rows: auto auto; }
+  .dog-gallery.count-3 li:first-child { grid-row: span 2; }
+  .dog-gallery.count-3 li:first-child img { height: 100%; }
+  .dog-gallery.count-1 { max-width: 46rem; }
+}
+.facts { display: grid; grid-template-columns: max-content 1fr; gap: 0.5rem 1.25rem; margin: 0; }
+.facts dt { font-weight: 600; color: var(--muted); font-size: 0.95rem; }
+.facts dd { margin: 0; }
+.ext-links { display: grid; gap: 0.6rem; margin-top: 1.25rem; justify-items: start; }
+.ext-link { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.65rem 1rem; border: 2px solid var(--ink); border-radius: 3px; text-decoration: none; font-weight: 600; }
+.ext-link::after { content: ""; width: 0.8em; height: 0.8em; background: currentColor; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M6 2h8v8h-2V5.4L4.7 12.7 3.3 11.3 10.6 4H6z'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M6 2h8v8h-2V5.4L4.7 12.7 3.3 11.3 10.6 4H6z'/%3E%3C/svg%3E") center / contain no-repeat; }
+.ext-link:hover { background: var(--ink); color: var(--paper); }
+
+/* Pedigree: parents, grandparents, great-grandparents as a bracket */
+.pedigree { margin-top: 1.25rem; }
+.ped-head, .ped-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 0.5rem; }
+.pedigree > .ped-head { display: none; }
+.pedigree { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 0.5rem; }
+.pedigree .ped-head { display: block; font-size: 0.85rem; font-weight: 600; color: var(--muted); padding: 0 0 0.4rem 0.2rem; }
+.ped-grid { grid-column: 1 / -1; grid-template-rows: repeat(8, minmax(3.4rem, auto)); row-gap: 0.4rem; }
+.ped-cell { display: flex; flex-direction: column; justify-content: center; background: var(--paper); border-left: 3px solid var(--line); padding: 0.45rem 0.7rem; border-radius: 0 3px 3px 0; }
+.ped-cell[style*="grid-column:1"] { border-left-color: var(--ochre); }
+.ped-cell[style*="grid-column:2"] { border-left-color: var(--slate); }
+.ped-empty { background: transparent; border-left-style: dashed; }
+.ped-role { font-size: 0.75rem; color: var(--muted); }
+.ped-name { font-family: var(--display); font-weight: 700; font-size: 1.1rem; line-height: 1.2; }
+.ped-cell[style*="grid-column:1"] .ped-name { font-size: 1.3rem; }
+.ped-reg { font-size: 0.78rem; color: var(--muted); margin-top: 0.15rem; }
+.ped-note { color: var(--muted); }
+.ped-parents { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 0.6rem; margin-top: 1rem; max-width: 44rem; }
+.ped-parents .ped-cell { border-left-color: var(--ochre); padding: 0.8rem 1rem; }
+.ped-parents .ped-name { font-size: 1.3rem; }
+@media (max-width: 40rem) {
+  .pedigree, .ped-grid { column-gap: 0.3rem; }
+  .ped-cell { padding: 0.35rem 0.45rem; }
+  .ped-name { font-size: 0.85rem; overflow-wrap: anywhere; }
+  .ped-cell[style*="grid-column:1"] .ped-name { font-size: 0.95rem; }
+  .ped-role, .ped-reg { font-size: 0.68rem; }
+  .pedigree .ped-head { font-size: 0.72rem; }
+}
+.dog-cta p { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.25rem; margin: 0; }
+
 /* Planned litter */
 .planned { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 1.5rem 2.5rem; align-items: center; background: var(--paper); border-left: 4px solid var(--ochre); padding: 1.5rem; margin-top: 1.25rem; }
 .planned-pair { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 0.75rem; }
