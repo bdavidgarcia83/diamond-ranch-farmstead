@@ -102,7 +102,20 @@ def render_form(animal):
 </form>'''
 
 
+def render_gallery():
+    photos = DATA.get("past_litter_photos", [])
+    if not photos:
+        return ""
+    items = "".join(
+        f'<li><img src="{url("/assets/img/" + esc(f))}" alt="Armenian Gampr puppy from a past Diamond Ranch Farmstead litter" '
+        f'loading="lazy" width="900" height="675"></li>' for f in photos)
+    return (f'<section class="band"><h2>Puppies from our last litter</h2>'
+            f'<p>A few of the pups from our most recent litter.</p>'
+            f'<ul class="gallery">{items}</ul></section>')
+
+
 RENDERERS = {
+    "gallery": render_gallery,
     "parents": render_parents,
     "litters": lambda: render_listing(
         "gampr_litters",
