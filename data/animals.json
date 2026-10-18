@@ -622,12 +622,12 @@
   "horses": [
     {
       "name": "Dakota",
-      "kind": "",
+      "kind": "Quarter Horse gelding",
       "about": "",
       "photos": [
         {
           "photo": "pets/dakota.webp",
-          "alt": "Dakota, a buckskin horse, close up"
+          "alt": "Dakota close up"
         },
         {
           "photo": "pets/dakota-2.webp",
@@ -637,12 +637,12 @@
     },
     {
       "name": "Raspberry",
-      "kind": "",
+      "kind": "Mare from Paint cutting horse lines (not registered)",
       "about": "",
       "photos": [
         {
           "photo": "pets/raspberry.webp",
-          "alt": "Raspberry, a sorrel horse with a white blaze, under saddle"
+          "alt": "Raspberry under saddle"
         }
       ]
     }
