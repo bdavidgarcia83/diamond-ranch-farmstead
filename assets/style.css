@@ -104,13 +104,13 @@ main > section { max-width: var(--wrap); margin: 0 auto; padding: 3rem 1rem; }
 .animal-row:hover h3, .animal-row:hover .sil { color: var(--ochre); }
 
 /* Silhouettes: the ranch's own animal cutouts, used as masks so they take the text color */
-.sil { display: block; background-color: currentColor; -webkit-mask: var(--m) center / contain no-repeat; mask: var(--m) center / contain no-repeat; }
-.sil-gampr   { --m: url("img/sil/gampr.png");   aspect-ratio: 276 / 192; }
-.sil-doe     { --m: url("img/sil/doe.png");     aspect-ratio: 295 / 242; }
-.sil-billy   { --m: url("img/sil/billy.png");   aspect-ratio: 286 / 258; }
-.sil-sheep   { --m: url("img/sil/sheep.png");   aspect-ratio: 176 / 160; }
-.sil-hen     { --m: url("img/sil/hen.png");     aspect-ratio: 171 / 235; }
-.sil-rooster { --m: url("img/sil/rooster.png"); aspect-ratio: 220 / 216; }
+.sil { display: block; background-color: currentColor; -webkit-mask-position: center; mask-position: center; -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; }
+.sil-gampr { -webkit-mask-image: url("img/sil/gampr.png"); mask-image: url("img/sil/gampr.png"); aspect-ratio: 276 / 192; }
+.sil-doe { -webkit-mask-image: url("img/sil/doe.png"); mask-image: url("img/sil/doe.png"); aspect-ratio: 295 / 242; }
+.sil-billy { -webkit-mask-image: url("img/sil/billy.png"); mask-image: url("img/sil/billy.png"); aspect-ratio: 286 / 258; }
+.sil-sheep { -webkit-mask-image: url("img/sil/sheep.png"); mask-image: url("img/sil/sheep.png"); aspect-ratio: 176 / 160; }
+.sil-hen { -webkit-mask-image: url("img/sil/hen.png"); mask-image: url("img/sil/hen.png"); aspect-ratio: 171 / 235; }
+.sil-rooster { -webkit-mask-image: url("img/sil/rooster.png"); mask-image: url("img/sil/rooster.png"); aspect-ratio: 220 / 216; }
 .animal-row .sil { width: 100%; color: var(--ink); transition: color 0.15s; }
 @media (max-width: 48rem) {
   .animal-row-text { grid-template-columns: 4.5rem 1fr; gap: 0.35rem 1.25rem; align-items: start; }

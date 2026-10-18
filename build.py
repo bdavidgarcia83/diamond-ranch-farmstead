@@ -13,6 +13,7 @@ Page sources live in src/pages/. Each starts with a small header:
 followed by HTML. Tokens like {{email}} come from site.json, and
 <!-- render:NAME --> blocks are filled from data/animals.json.
 """
+import hashlib
 import html
 import json
 import os
@@ -26,6 +27,7 @@ OUT = ROOT / "_site"
 SITE = json.loads((ROOT / "site.json").read_text())
 DATA = json.loads((ROOT / "data" / "animals.json").read_text())
 BASE = os.environ.get("SITE_BASE", "").rstrip("/")
+CSS_VERSION = hashlib.md5((ROOT / "assets" / "style.css").read_bytes()).hexdigest()[:8]
 
 STATUS_LABEL = {"available": "Available", "reserved": "Reserved", "sold": "Sold"}
 
@@ -209,7 +211,7 @@ def layout(meta, body):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rokkitt:wght@500;700;800&family=Libre+Franklin:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{url("/assets/style.css")}">
+<link rel="stylesheet" href="{url("/assets/style.css")}?v={CSS_VERSION}">
 <script type="application/ld+json">{json.dumps(schema)}</script>
 </head>
 <body class="page-{meta.get("slug", "page")}">
