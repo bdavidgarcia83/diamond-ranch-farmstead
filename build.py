@@ -42,7 +42,8 @@ def photo_or_mark(item, alt):
     if item.get("photo"):
         return (f'<img src="{url("/assets/img/" + item["photo"])}" alt="{esc(alt)}" '
                 f'loading="lazy" width="800" height="600">')
-    return '<div class="no-photo" aria-hidden="true"><svg viewBox="0 0 40 40"><use href="#mark"/></svg></div>'
+    return (f'<div class="no-photo"><img src="{url("/assets/img/logo-240.webp")}" alt="" width="240" height="240">'
+            '<span>Photo coming soon</span></div>')
 
 
 def status_tag(item):
@@ -168,6 +169,8 @@ def layout(meta, body):
         "telephone": SITE["phone"],
         "address": {"@type": "PostalAddress", "addressLocality": "Hereford",
                     "addressRegion": "AZ", "addressCountry": "US"},
+        "logo": SITE["url"] + "/assets/img/logo-240.png",
+        "image": SITE["url"] + "/assets/img/og-image.jpg",
         "sameAs": list(SITE["links"].values()),
     }
     return f'''<!doctype html>
@@ -183,7 +186,13 @@ def layout(meta, body):
 <meta property="og:description" content="{esc(meta["description"])}">
 <meta property="og:url" content="{SITE["url"]}{path}">
 <meta property="og:type" content="website">
-<link rel="icon" href="{url("/assets/favicon.svg")}" type="image/svg+xml">
+<meta property="og:image" content="{SITE["url"]}/assets/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#2b1a0e">
+<link rel="icon" href="{url("/assets/favicon-32.png")}" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="{url("/assets/apple-touch-icon.png")}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rokkitt:wght@500;700;800&family=Libre+Franklin:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -191,16 +200,10 @@ def layout(meta, body):
 <script type="application/ld+json">{json.dumps(schema)}</script>
 </head>
 <body class="page-{meta.get("slug", "page")}">
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="mark" viewBox="0 0 40 40">
-    <path d="M20 2 38 20 20 38 2 20Z" fill="none" stroke="currentColor" stroke-width="3"/>
-    <path d="M15 12h6.5c3.6 0 6 2 6 5.2 0 2.4-1.4 4.1-3.6 4.8L28 28h-4l-3.6-5.6H18.6V28H15Zm3.6 3.1v4.3h2.8c1.6 0 2.5-.8 2.5-2.2s-.9-2.1-2.5-2.1Z" fill="currentColor"/>
-  </symbol>
-</svg>
 {banner}
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
-  <a class="brand" href="{url("/")}"><svg viewBox="0 0 40 40" aria-hidden="true"><use href="#mark"/></svg><span>Diamond Ranch Farmstead</span></a>
+  <a class="brand" href="{url("/")}"><img src="{url("/assets/img/logo-240.webp")}" alt="" width="240" height="240"><span>Diamond Ranch Farmstead</span></a>
   <nav aria-label="Main"><ul>{nav}</ul></nav>
 </header>
 <main id="main">
@@ -210,6 +213,7 @@ def layout(meta, body):
   <svg class="ridge" viewBox="0 0 1200 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 90V62l70-14 60 10 90-30 55 16 70-28 45 12 85-26 60 22 50-8 80 30 70-18 95 20 60-12 85 22 60-16 75 18 90-8V90Z"/></svg>
   <div class="footer-inner">
     <div>
+      <img class="footer-logo" src="{url("/assets/img/logo-240.webp")}" alt="Diamond Ranch Farmstead logo" width="240" height="240" loading="lazy">
       <p class="footer-name">Diamond Ranch Farmstead</p>
       <p>{esc(SITE["owners"])}<br>Hereford, Arizona. Visits by appointment.</p>
     </div>
