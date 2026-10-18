@@ -298,7 +298,37 @@ def render_home_next():
             f'<a href="{url("/gampr-puppies/")}#apply">Join the waitlist</a></span></p>')
 
 
+def render_pets():
+    rows = []
+    for pet in DATA.get("pets", []):
+        photos = pet.get("photos") or []
+        main = photo_or_mark(photos[0], photos[0].get("alt", pet["name"])) if photos else photo_or_mark({}, pet["name"])
+        extra = ""
+        if len(photos) > 1:
+            extra = '<ul class="pet-more">' + "".join(
+                f'<li><img src="{url("/assets/img/" + esc(ph["photo"]))}" alt="{esc(ph.get("alt"))}" loading="lazy"></li>'
+                for ph in photos[1:]) + "</ul>"
+        about = f'<p>{esc(pet["about"])}</p>' if pet.get("about") else ""
+        rows.append(f'<li class="pet"><div class="pet-photo">{main}</div><div class="pet-text">'
+                    f'<h3>{esc(pet["name"])}</h3><p class="pet-kind">{esc(pet.get("kind"))}</p>{about}{extra}</div></li>')
+    return f'<ul class="pets">{"".join(rows)}</ul>'
+
+
+def render_cats():
+    cats = DATA.get("barn_cats") or {}
+    about = f'<p>{esc(cats["about"])}</p>' if cats.get("about") else ""
+    photos = cats.get("photos") or []
+    if not photos:
+        return about + '<div class="empty"><p>Barn cat photos coming soon.</p></div>'
+    items = "".join(
+        f'<li><img src="{url("/assets/img/" + esc(ph["photo"]))}" alt="{esc(ph.get("alt"))}" loading="lazy" width="900" height="675"></li>'
+        for ph in photos)
+    return about + f'<ul class="gallery">{items}</ul>'
+
+
 RENDERERS = {
+    "pets": render_pets,
+    "cats": render_cats,
     "home-next": render_home_next,
     "gallery": render_gallery,
     "parents": render_parents,
@@ -322,6 +352,7 @@ NAV = [
     ("/gampr-puppies/", "Gampr puppies"),
     ("/goats/", "Goats"),
     ("/sheep/", "Sheep"),
+    ("/ranch-life/", "Ranch life"),
     ("/about/", "About"),
     ("/contact/", "Contact"),
 ]
