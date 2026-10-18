@@ -115,6 +115,31 @@ def ext_link(href, label):
             f'{label}<span class="visually-hidden"> (opens in a new window)</span></a>')
 
 
+def render_journey(dog):
+    stops = dog.get("journey") or []
+    if not stops:
+        return ""
+    items = []
+    for i, stop in enumerate(stops, 1):
+        media = ""
+        if stop.get("photos"):
+            media = '<ul class="stop-photos">' + "".join(
+                f'<li><img src="{url("/assets/img/" + esc(ph["photo"]))}" alt="{esc(ph.get("alt"))}" loading="lazy"></li>'
+                for ph in stop["photos"]) + "</ul>"
+        if stop.get("video"):
+            v = stop["video"]
+            media += (f'<video class="stop-video" controls playsinline preload="none" '
+                      f'poster="{url("/assets/img/" + esc(v["poster"]))}" aria-label="{esc(v.get("label"))}">'
+                      f'<source src="{url("/assets/" + esc(v["src"]))}" type="video/mp4"></video>')
+        items.append(
+            f'<li class="stop"><span class="stop-num" aria-hidden="true">{i}</span>'
+            f'<p class="stop-place">{esc(stop.get("place"))}</p><h3>{esc(stop.get("title"))}</h3>'
+            f'<p>{esc(stop.get("text"))}</p>{media}</li>')
+    return (f'<section class="band journey"><h2>{esc(dog["name"])}\'s journey</h2>'
+            f'<p class="journey-route">{esc(dog.get("journey_intro", ""))}</p>'
+            f'<ol class="stops">{"".join(items)}</ol></section>')
+
+
 def dog_page(dog):
     name = dog["name"]
     facts = [("Registered name", esc(dog.get("registered_name"))),
@@ -149,10 +174,12 @@ def dog_page(dog):
   <h1>{esc(name)}</h1>
   <p class="dog-regname">{esc(dog.get("registered_name"))}</p>
   <p class="lede">{esc(dog.get("summary"))}</p>
+  {"".join(f'<p class="dog-about">{esc(t)}</p>' for t in dog.get("about", []))}
 </section>
 <section class="band dog-photos">
   {gal_html}
 </section>
+{render_journey(dog)}
 <section class="band two-col dog-info">
   <div>
     <h2>Registration</h2>

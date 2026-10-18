@@ -221,7 +221,7 @@
       "born": "2025-05-14",
       "reg": "051425-02",
       "bred_by": "",
-      "summary": "Athena is our youngest female. She's Embark tested, and her OFA hip, elbow and patella evaluations are in progress.",
+      "summary": "Athena was born in a sheep camp in the mountains of Armenia and came to our ranch as an imported puppy. She's Embark tested, and her OFA hip, elbow and patella evaluations are in progress.",
       "health": "Embark tested · OFA hips, elbows and patellas in progress",
       "embark": "https://app.embarkvet.com/pet/d5b08f59-cc7e-4358-b455-8087a0345c6a/about",
       "ofa": "",
@@ -244,7 +244,118 @@
           "name": "SAF Zorik's Qave of Aragats"
         }
       },
-      "photo": "athena.webp"
+      "photo": "athena.webp",
+      "about": [
+        "Today Athena is living her best life in Hereford, learning the ins and outs of daily life on the ranch alongside our other Gamprs, the horses, sheep, goats, small dogs and cats.",
+        "She loves to go on walks and run beside us on the Honda. She loves to play, she loves water, and she's very curious."
+      ],
+      "journey": [
+        {
+          "place": "Sheep camp, mountains of Armenia",
+          "title": "Born to working dogs",
+          "text": "Athena was born in a sheep camp high in the Armenian mountains, where her mother and the other dogs protect the flock from wolves. She grew up playing with her sisters, her parents and the other working dogs.",
+          "photos": [
+            {
+              "photo": "athena/mom1.webp",
+              "alt": "Athena's mother resting in the mountain pasture beside the sheep camp tent"
+            },
+            {
+              "photo": "athena/mom2.webp",
+              "alt": "Athena's mother in the mountain pasture with a man and a puppy"
+            },
+            {
+              "photo": "athena/sisters1.webp",
+              "alt": "Athena and her sisters as young puppies on a blanket in the pasture"
+            },
+            {
+              "photo": "athena/sisters2.webp",
+              "alt": "Athena and her sisters eating together"
+            }
+          ]
+        },
+        {
+          "place": "Armenia, about 8 weeks old",
+          "title": "Getting ready for America",
+          "text": "We started her import process when she was barely 8 weeks old, buying her vaccines and preparing her for the trip.",
+          "photos": [
+            {
+              "photo": "athena/shots.webp",
+              "alt": "Athena getting a puppy vaccine in Armenia"
+            }
+          ]
+        },
+        {
+          "place": "A village in Armenia, 4 months old",
+          "title": "Vaccines and titer tests",
+          "text": "At 4 months she moved to a village, where she was vaccinated for rabies and waited for her titer tests and vaccines to mature.",
+          "photos": [
+            {
+              "photo": "athena/waiting.webp",
+              "alt": "Athena in a courtyard in the village, waiting for her flight"
+            }
+          ]
+        },
+        {
+          "place": "Armenia to Qatar to Atlanta",
+          "title": "The flight",
+          "text": "Once she had her plane ticket, she flew from Armenia to Qatar, then on to Atlanta, Georgia.",
+          "photos": [
+            {
+              "photo": "athena/crate.webp",
+              "alt": "Athena with her crate just before leaving Armenia"
+            },
+            {
+              "photo": "athena/boarding.webp",
+              "alt": "Athena in her travel crate, boarding the plane in Armenia"
+            }
+          ]
+        },
+        {
+          "place": "Atlanta, Georgia to Mississippi",
+          "title": "On the road with her sister",
+          "text": "In Atlanta, Athena and her sister were picked up and driven to Mississippi for more vaccines and an overnight stay.",
+          "photos": [
+            {
+              "photo": "athena/atlanta.webp",
+              "alt": "Athena and her sister in the back seat, traveling from Atlanta"
+            },
+            {
+              "photo": "athena/miss.webp",
+              "alt": "Athena on a deck in Mississippi during her stopover for vaccines"
+            }
+          ]
+        },
+        {
+          "place": "Dallas, Texas",
+          "title": "Picked up and headed home",
+          "text": "From Mississippi she went on to Dallas, Texas, where we picked her up and brought her home.",
+          "photos": [
+            {
+              "photo": "athena/texas.webp",
+              "alt": "Athena resting on the floor in Texas"
+            },
+            {
+              "photo": "athena/meeting.webp",
+              "alt": "Athena meeting another dog on the way home"
+            },
+            {
+              "photo": "athena/greeting.webp",
+              "alt": "Athena greeting another dog on the trip home"
+            }
+          ]
+        },
+        {
+          "place": "Hereford, Arizona",
+          "title": "Home on the ranch",
+          "text": "Athena now lives with us on the ranch, learning daily life with the other Gamprs and the rest of the animals.",
+          "video": {
+            "src": "video/athena-home.mp4",
+            "poster": "athena/video-poster.webp",
+            "label": "Athena relaxing at home in Hereford"
+          }
+        }
+      ],
+      "journey_intro": "From a sheep camp in the Armenian mountains to our ranch in Hereford, Arizona."
     }
   ],
   "gampr_litters": [],
