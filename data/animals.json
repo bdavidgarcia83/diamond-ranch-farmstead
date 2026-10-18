@@ -1,5 +1,5 @@
 {
-  "_how_to_edit": "Each animal is one entry. status is one of: available, reserved, sold. photo is a file name in assets/img (leave empty if none). Lists can be empty; the page then shows a waitlist message. past_litter_photos is a gallery of puppies from earlier litters: each has a photo (file name in assets/img) and alt (a short description). planned_litters lists upcoming breedings: sire and dam must match names in gampr_parents; timing (e.g. \"Expected spring 2027\") and note are optional. Empty the list once the litter is born. Each gampr_parents entry also drives that dog's own page at /dogs/<slug>/: registered_name, born (YYYY-MM-DD), summary, health, embark/ofa/agca links (leave empty to hide), gallery, and pedigree (sire/dam, each with name, optional reg, and their own sire/dam). pets and horses (Ranch life page): name, kind, about (optional), photos (list of {photo, alt}; first one is the main photo). barn_cats: about (optional) and photos.",
+  "_how_to_edit": "Each animal is one entry. status is one of: available, reserved, sold. photo is a file name in assets/img (leave empty if none). Lists can be empty; the page then shows a waitlist message. past_litter_photos is a gallery of puppies from earlier litters: each has a photo (file name in assets/img) and alt (a short description). planned_litters lists upcoming breedings: sire and dam must match names in gampr_parents; timing (e.g. \"Expected spring 2027\") and note are optional. Empty the list once the litter is born. Each gampr_parents entry also drives that dog's own page at /dogs/<slug>/: registered_name, born (YYYY-MM-DD), summary, health, embark/ofa/agca links (leave empty to hide), gallery, and pedigree (sire/dam, each with name, optional reg, and their own sire/dam). pets and horses (Ranch life page): name, kind, about (optional), photos (list of {photo, alt}; first one is the main photo). barn_cats: about (optional) and photos. gampr_parents may also have about (paragraphs), videos (list of {src, poster, caption}) and litter ({title, text, videos}). guardians: working dogs outside the breeding program, shown on Ranch life.",
   "gampr_parents": [
     {
       "name": "Dozer",
@@ -9,7 +9,7 @@
       "born": "2023-02-09",
       "reg": "020923-04",
       "bred_by": "Judy Simmons",
-      "summary": "Dozer is one of our breeding males. He was bred by Judy Simmons and is OFA CHIC certified and Embark tested. He sired our last litter and is the sire of our planned spring 2027 litter with Riley.",
+      "summary": "Dozer is the dominant male in our pack, never aggressive, and a big puppy at heart. He's OFA CHIC certified and Embark tested, and he's the sire of our planned spring 2027 litter with Riley.",
       "health": "OFA CHIC certified · Embark tested",
       "embark": "https://my.embarkvet.com/dog/dozer1054",
       "ofa": "https://ofa.org/advanced-search/?appnum=2606898",
@@ -20,8 +20,20 @@
           "alt": "Dozer standing in the desert brush"
         },
         {
+          "photo": "dogs/dozer-cat.webp",
+          "alt": "A barn cat leaning against Dozer as he lies on the patio"
+        },
+        {
+          "photo": "dogs/dozer-sheep.webp",
+          "alt": "Dozer resting among the sheep"
+        },
+        {
           "photo": "litter-dozer-pups.webp",
           "alt": "Dozer lying in the grass with three of his puppies"
+        },
+        {
+          "photo": "dogs/dozer-puppy.webp",
+          "alt": "Dozer as a young puppy on a leash"
         }
       ],
       "pedigree": {
@@ -77,7 +89,19 @@
           }
         }
       },
-      "photo": "dozer.webp"
+      "photo": "dozer.webp",
+      "about": [
+        "We met Dozer's breeder in Mississippi when he was about four months old, and he rode home to Arizona with us, our daughter, and our dogs Cody and Butch. When he arrived on the ranch, he planted all four feet, put his nose in the air and took a big breath, as if to ask whether all of this was his. Then he let out a low growl, claiming everything he could smell and see.",
+        "He's been the protector and the playful big guy on the property ever since. Dozer lives to play and has extreme patience. He's buddies with Cody, and he seems to laugh at Butch, who tries to boss him around even though Butch is smaller than Dozer's head.",
+        "He loves his own puppies and seems proud of them. He eats right alongside them and only gives a low growl if they get out of hand. We can put him in with chickens, ducks, newborn stock, sheep, goats, cows and horses. The cats love him too, and they'd be happiest if he'd just lie in the yard so they could curl up between his front legs and sleep."
+      ],
+      "videos": [
+        {
+          "src": "video/dozer-reel.mp4",
+          "poster": "dogs/poster-dozer-reel.webp",
+          "caption": "Dozer out on the ranch"
+        }
+      ]
     },
     {
       "name": "Riley",
@@ -87,7 +111,7 @@
       "born": "2021-07-31",
       "reg": "073121-09",
       "bred_by": "Tribble Hill Farm",
-      "summary": "Riley is one of our breeding females. She was bred by Tribble Hill Farm and is OFA CHIC certified and Embark tested. She's the dam of our planned spring 2027 litter with Dozer.",
+      "summary": "Riley is our oldest Gampr and the monarch of the property. She's OFA CHIC certified and Embark tested, and she's the dam of our planned spring 2027 litter with Dozer.",
       "health": "OFA CHIC certified · Embark tested",
       "embark": "https://my.embarkvet.com/dog/riley5908",
       "ofa": "https://ofa.org/advanced-search/?appnum=2487034",
@@ -98,8 +122,20 @@
           "alt": "Riley standing by the fence line"
         },
         {
+          "photo": "dogs/riley-newborn.webp",
+          "alt": "Riley lying among the sheep, nose to nose with a newborn lamb"
+        },
+        {
           "photo": "riley-2.webp",
           "alt": "Riley sitting in the pasture"
+        },
+        {
+          "photo": "dogs/riley-puppy.webp",
+          "alt": "Riley as a puppy"
+        },
+        {
+          "photo": "dogs/riley-ride.webp",
+          "alt": "Riley riding along in the truck"
         }
       ],
       "pedigree": {
@@ -136,7 +172,34 @@
           }
         }
       },
-      "photo": "riley.webp"
+      "photo": "riley.webp",
+      "about": [
+        "Riley was the third Gampr to join our ranch. She came to us from Mississippi at three months old, riding with a littermate in a big rig semi to Buckeye, Arizona, where we met the driver at midnight.",
+        "She's learned how everything works here, and she makes sure it stays that way. Riley keeps the property calm and in order. She's great with newborn stock and with all of the goats, sheep, cats and horses. She plays sometimes, but mostly she just likes everything in its place."
+      ],
+      "videos": [
+        {
+          "src": "video/riley-newborn.mp4",
+          "poster": "dogs/poster-riley-newborn.webp",
+          "caption": "Riley with a newborn goat kid"
+        }
+      ],
+      "litter": {
+        "title": "Riley's first litter",
+        "text": "These are the puppies from Riley's first litter, from their first weeks to growing up on the ranch.",
+        "videos": [
+          {
+            "src": "video/litter-weeks.mp4",
+            "poster": "dogs/poster-litter-weeks.webp",
+            "caption": "The first weeks"
+          },
+          {
+            "src": "video/litter-growing.mp4",
+            "poster": "dogs/poster-litter-growing.webp",
+            "caption": "Growing up on the ranch"
+          }
+        ]
+      }
     },
     {
       "name": "Toros",
@@ -146,7 +209,7 @@
       "born": "2024-02-27",
       "reg": "022724-09",
       "bred_by": "Tribble Hill Farm",
-      "summary": "Toros is our young male, bred by Tribble Hill Farm. He's Embark tested, and his OFA hip, elbow and patella evaluations are in progress.",
+      "summary": "Toros is a proud protector and very loyal to his people. He's Embark tested, and his OFA hip, elbow and patella evaluations are in progress.",
       "health": "Embark tested · OFA hips, elbows and patellas in progress",
       "embark": "https://app.embarkvet.com/pet/50ed295a-5836-42bc-8ab0-8831640be577/about",
       "ofa": "",
@@ -155,6 +218,22 @@
         {
           "photo": "toros.webp",
           "alt": "Toros standing in the desert"
+        },
+        {
+          "photo": "dogs/toros-portrait.webp",
+          "alt": "Close-up portrait of Toros"
+        },
+        {
+          "photo": "dogs/toros-evening.webp",
+          "alt": "Toros lying in the evening light"
+        },
+        {
+          "photo": "dogs/toros-puppy.webp",
+          "alt": "Toros as a puppy on a leash"
+        },
+        {
+          "photo": "dogs/toros-ride.webp",
+          "alt": "Toros as a puppy riding in the truck"
         }
       ],
       "pedigree": {
@@ -211,7 +290,19 @@
           }
         }
       },
-      "photo": "toros.webp"
+      "photo": "toros.webp",
+      "about": [
+        "We picked Toros up in New Mexico at six months old, after he'd traveled there from Mississippi. He's found his place among our livestock guardian dogs and spends a lot of time with Nilla, our crossbred guardian.",
+        "Toros loves to be the first on the fence line when there's a threat to the sheep or goats he's guarding. He loves newborn stock. He isn't as patient with young pups as Dozer is.",
+        "With his people he's very loyal. He loves to go on walks and is very good on a leash. He's not as playful as Dozer, but he loves to play with Athena."
+      ],
+      "videos": [
+        {
+          "src": "video/toros-reel.mp4",
+          "poster": "dogs/poster-toros-reel.webp",
+          "caption": "Toros with the pups, a barn cat, and on the fence line"
+        }
+      ]
     },
     {
       "name": "Athena",
@@ -437,6 +528,22 @@
     {
       "photo": "litter-8.webp",
       "alt": "Armenian Gampr puppies from our last litter"
+    },
+    {
+      "photo": "litter-9.webp",
+      "alt": "Riley's puppies together in their pen"
+    },
+    {
+      "photo": "litter-11.webp",
+      "alt": "Riley's puppies piled together in the grass"
+    },
+    {
+      "photo": "litter-12.webp",
+      "alt": "One of Riley's puppies, close up"
+    },
+    {
+      "photo": "litter-13.webp",
+      "alt": "One of Riley's puppies walking across the yard"
     }
   ],
   "goats": [],
@@ -478,5 +585,13 @@
   "barn_cats": {
     "about": "",
     "photos": []
-  }
+  },
+  "guardians": [
+    {
+      "name": "Nilla",
+      "kind": "Crossbred livestock guardian dog",
+      "about": "Nilla is our jack-of-all-trades guardian. We adopted her, and she's fit right into our program. We can pair her with any of our dogs and livestock, and she goes out with the males when they're in the pasture protecting the sheep or goats. She's good with all the puppies and helps train the young dogs. She had one litter and has since been spayed. She and Riley don't always get along, but they'll tolerate each other and work together when we ask them to.",
+      "photos": []
+    }
+  ]
 }

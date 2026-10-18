@@ -179,6 +179,8 @@ mark.todo { background: #f3dfb6; color: var(--ink); padding: 0 0.2em; }
 .dog-head { padding-top: 1rem !important; }
 .dog-regname { font-family: var(--display); font-size: clamp(1.25rem, 3vw, 1.6rem); font-weight: 500; color: var(--ochre); margin: -0.2em 0 1rem; }
 .dog-gallery { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; grid-template-columns: 1fr; }
+.dog-gallery.count-many { grid-template-columns: 1fr 1fr; }
+.dog-gallery.count-many li:first-child { grid-column: span 2; }
 .dog-gallery img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 3px; display: block; }
 @media (min-width: 40rem) {
   .dog-gallery.count-2 { grid-template-columns: 1fr 1fr; }
@@ -186,6 +188,9 @@ mark.todo { background: #f3dfb6; color: var(--ink); padding: 0 0.2em; }
   .dog-gallery.count-3 li:first-child { grid-row: span 2; }
   .dog-gallery.count-3 li:first-child img { height: 100%; }
   .dog-gallery.count-1 { max-width: 46rem; }
+  .dog-gallery.count-many { grid-template-columns: repeat(4, 1fr); }
+  .dog-gallery.count-many li:first-child { grid-column: span 2; grid-row: span 2; }
+  .dog-gallery.count-many li:first-child img { height: 100%; }
 }
 .facts { display: grid; grid-template-columns: max-content 1fr; gap: 0.5rem 1.25rem; margin: 0; }
 .facts dt { font-weight: 600; color: var(--muted); font-size: 0.95rem; }
@@ -209,6 +214,7 @@ mark.todo { background: #f3dfb6; color: var(--ink); padding: 0 0.2em; }
 .stop > p { max-width: 38em; color: var(--slate); }
 .stop-photos { list-style: none; margin: 1rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .stop-photos img { height: 15rem; width: auto; max-width: 100%; object-fit: cover; border-radius: 3px; display: block; }
+.litter-gallery { margin-top: 1.25rem; }
 .stop-videos { display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: 0.75rem; margin-top: 1rem; max-width: 52rem; }
 .stop-videos figure { margin: 0; }
 .stop-videos video { width: 100%; aspect-ratio: 16 / 9; display: block; border-radius: 3px; background: var(--ink); }

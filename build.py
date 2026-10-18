@@ -115,6 +115,28 @@ def ext_link(href, label):
             f'{label}<span class="visually-hidden"> (opens in a new window)</span></a>')
 
 
+def render_videos(vids):
+    if not vids:
+        return ""
+    return '<div class="stop-videos">' + "".join(
+        f'<figure><video controls playsinline preload="none" '
+        f'poster="{url("/assets/img/" + esc(v["poster"]))}" aria-label="{esc(v.get("caption"))}">'
+        f'<source src="{url("/assets/" + esc(v["src"]))}" type="video/mp4"></video>'
+        f'<figcaption>{esc(v.get("caption", ""))}</figcaption></figure>' for v in vids) + "</div>"
+
+
+def render_dog_litter(dog):
+    lit = dog.get("litter")
+    if not lit:
+        return ""
+    photos = DATA.get("past_litter_photos", [])
+    items = "".join(
+        f'<li><img src="{url("/assets/img/" + esc(p["photo"]))}" alt="{esc(p.get("alt"))}" loading="lazy" width="900" height="675"></li>'
+        for p in photos)
+    return (f'<section class="band" id="litter"><h2>{esc(lit["title"])}</h2><p>{esc(lit.get("text"))}</p>'
+            f'{render_videos(lit.get("videos"))}<ul class="gallery litter-gallery">{items}</ul></section>')
+
+
 def render_journey(dog):
     stops = dog.get("journey") or []
     if not stops:
@@ -164,7 +186,8 @@ def dog_page(dog):
         imgs = "".join(
             f'<li><img src="{url("/assets/img/" + esc(g["photo"]))}" alt="{esc(g.get("alt"))}" '
             f'loading="lazy" width="1200" height="900"></li>' for g in gallery)
-        gal_html = f'<ul class="dog-gallery count-{min(len(gallery), 3)}">{imgs}</ul>'
+        cls = f"count-{len(gallery)}" if len(gallery) <= 3 else "count-many"
+        gal_html = f'<ul class="dog-gallery {cls}">{imgs}</ul>'
     ped = dog.get("pedigree") or {}
     ped_note = ""
     if not any((ped.get(k) or {}).get("sire") for k in ("sire", "dam")):
@@ -181,7 +204,9 @@ def dog_page(dog):
 <section class="band dog-photos">
   {gal_html}
 </section>
+{f'<section class="band"><h2>Videos</h2>{render_videos(dog.get("videos"))}</section>' if dog.get("videos") else ""}
 {render_journey(dog)}
+{render_dog_litter(dog)}
 <section class="band two-col dog-info">
   <div>
     <h2>Registration</h2>
@@ -252,8 +277,8 @@ def render_gallery():
     items = "".join(
         f'<li><img src="{url("/assets/img/" + esc(p["photo"]))}" alt="{esc(p.get("alt"))}" '
         f'loading="lazy" width="900" height="675"></li>' for p in photos)
-    return (f'<section class="band"><h2>Puppies from our last litter</h2>'
-            f'<p>A few of the pups from our most recent litter.</p>'
+    return (f'<section class="band"><h2>Puppies from Riley\'s first litter</h2>'
+            f'<p>A few of the pups from our most recent litter. <a href="{url("/dogs/riley/")}#litter">See videos of the litter on Riley\'s page</a>.</p>'
             f'<ul class="gallery">{items}</ul></section>')
 
 
@@ -331,6 +356,7 @@ def render_cats():
 RENDERERS = {
     "pets": render_pets,
     "horses": lambda: render_pets("horses"),
+    "guardians": lambda: render_pets("guardians"),
     "cats": render_cats,
     "home-next": render_home_next,
     "gallery": render_gallery,
