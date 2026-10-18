@@ -552,20 +552,71 @@
     {
       "name": "Cody",
       "kind": "Mini Australian Shepherd",
-      "about": "",
-      "photos": []
+      "about": "We brought Cody home in April 2021 as an 8-week-old puppy, and he quickly became part of the family and farm life. He loves going with us no matter what we're doing: riding on the quad or in the side-by-side, going on walks and running alongside the bike. He gets along great with all the big dogs; his only rivalry is a mild one with Toros. He and Butch get along great too. We keep him groomed and keep the burrs out of his silky coat, and if we aren't careful he helps himself to the big dogs' food and starts putting on weight.",
+      "photos": [
+        {
+          "photo": "pets/cody.webp",
+          "alt": "Cody riding on the quad"
+        },
+        {
+          "photo": "pets/cody-puppy.webp",
+          "alt": "Cody as a puppy in 2021"
+        },
+        {
+          "photo": "pets/cody-2.webp",
+          "alt": "Cody close up"
+        },
+        {
+          "photo": "pets/cody-truck.webp",
+          "alt": "Cody riding in the truck"
+        }
+      ]
     },
     {
       "name": "Butch",
       "kind": "Toy Fox Terrier",
-      "about": "",
-      "photos": []
+      "about": "We picked Butch up in Ohio in September 2018, when he was 12 weeks old, and he's been king of the household ever since. He even tries to tell Dozer what's up. He doesn't like the cold or the rain, and he loves lying in the sun. He travels everywhere with us, usually perched in his bed on the center console of our truck.",
+      "photos": [
+        {
+          "photo": "pets/butch.webp",
+          "alt": "Butch standing on a boulder overlooking the hills"
+        },
+        {
+          "photo": "pets/butch-field.webp",
+          "alt": "Butch in his plaid coat in a field"
+        },
+        {
+          "photo": "pets/butch-2.webp",
+          "alt": "Butch in profile"
+        }
+      ],
+      "videos": [
+        {
+          "src": "video/butch-cody-hike.mp4",
+          "poster": "pets/poster-butch-cody-hike.webp",
+          "caption": "Butch and Cody climbing the boulders on a hike"
+        },
+        {
+          "src": "video/butch-home.mp4",
+          "poster": "pets/poster-butch-home.webp",
+          "caption": "Butch at home on the couch"
+        }
+      ]
     },
     {
       "name": "Nova",
       "kind": "French Bulldog",
-      "about": "",
-      "photos": []
+      "about": "Nova is the newest addition to the family. She's a hard-hitting, comical pup who's fast one minute and lazy the next. She's two years old and still learning how she fits into our farm life.",
+      "photos": [
+        {
+          "photo": "pets/nova.webp",
+          "alt": "Nova sitting on the rug by the front door"
+        },
+        {
+          "photo": "pets/nova-2.webp",
+          "alt": "Nova sitting on the carpet"
+        }
+      ]
     }
   ],
   "horses": [
@@ -573,13 +624,27 @@
       "name": "Dakota",
       "kind": "",
       "about": "",
-      "photos": []
+      "photos": [
+        {
+          "photo": "pets/dakota.webp",
+          "alt": "Dakota, a buckskin horse, close up"
+        },
+        {
+          "photo": "pets/dakota-2.webp",
+          "alt": "Dakota at the hitching post at sunset"
+        }
+      ]
     },
     {
       "name": "Raspberry",
       "kind": "",
       "about": "",
-      "photos": []
+      "photos": [
+        {
+          "photo": "pets/raspberry.webp",
+          "alt": "Raspberry, a sorrel horse with a white blaze, under saddle"
+        }
+      ]
     }
   ],
   "barn_cats": {
@@ -593,8 +658,12 @@
       "about": "Nilla is our jack-of-all-trades guardian. We adopted her, and she's fit right into our program. We can pair her with any of our dogs and livestock, and she goes out with the males when they're in the pasture protecting the sheep or goats. She's good with all the puppies and helps train the young dogs. She had one litter and has since been spayed. She and Riley don't always get along, but they'll tolerate each other and work together when we ask them to.",
       "photos": [
         {
+          "photo": "pets/nilla-hay.webp",
+          "alt": "Nilla lying on a hay bale in the pen"
+        },
+        {
           "photo": "pets/nilla.webp",
-          "alt": "Nilla, our white crossbred guardian, walking along the fence line"
+          "alt": "Nilla walking along the fence line"
         }
       ]
     }

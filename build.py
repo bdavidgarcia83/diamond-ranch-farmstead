@@ -337,7 +337,7 @@ def render_pets(key="pets"):
         rows.append(f'<li class="pet"><div class="pet-photo">{main}</div><div class="pet-text">'
                     f'<h3>{esc(pet["name"])}</h3>'
                     + (f'<p class="pet-kind">{esc(pet["kind"])}</p>' if pet.get("kind") else "")
-                    + f'{about}{extra}</div></li>')
+                    + f'{about}{extra}{render_videos(pet.get("videos"))}</div></li>')
     return f'<ul class="pets">{"".join(rows)}</ul>'
 
 
