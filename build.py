@@ -228,6 +228,8 @@ def layout(meta, body):
   <div class="herd" aria-hidden="true">
     <span class="sil sil-rooster"></span><span class="sil sil-hen"></span>
     <span class="herd-gap"></span>
+    <span class="sil sil-saguaro"></span>
+    <span class="herd-gap"></span>
     <span class="sil sil-sheep"></span><span class="sil sil-doe"></span><span class="sil sil-billy"></span>
     <span class="sil sil-gampr"></span>
   </div>

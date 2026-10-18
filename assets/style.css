@@ -110,6 +110,7 @@ main > section { max-width: var(--wrap); margin: 0 auto; padding: 3rem 1rem; }
 .sil-billy { -webkit-mask-image: url("img/sil/billy.png"); mask-image: url("img/sil/billy.png"); aspect-ratio: 286 / 258; }
 .sil-sheep { -webkit-mask-image: url("img/sil/sheep.png"); mask-image: url("img/sil/sheep.png"); aspect-ratio: 176 / 160; }
 .sil-hen { -webkit-mask-image: url("img/sil/hen.png"); mask-image: url("img/sil/hen.png"); aspect-ratio: 171 / 235; }
+.sil-saguaro { -webkit-mask-image: url("img/sil/saguaro.svg"); mask-image: url("img/sil/saguaro.svg"); aspect-ratio: 64 / 120; }
 .sil-rooster { -webkit-mask-image: url("img/sil/rooster.png"); mask-image: url("img/sil/rooster.png"); aspect-ratio: 220 / 216; }
 .animal-row .sil { width: 100%; color: var(--ink); transition: color 0.15s; }
 @media (max-width: 48rem) {
@@ -199,10 +200,12 @@ mark.todo { background: #f3dfb6; color: var(--ink); padding: 0 0.2em; }
 .herd .sil-sheep { height: 2.5rem; }
 .herd .sil-hen { height: 2.1rem; }
 .herd .sil-rooster { height: 2.2rem; }
+.herd .sil-saguaro { height: 6.5rem; }
 @media (max-width: 36rem) {
   .herd { gap: 0.35rem; }
   .herd .sil-gampr { height: 2.4rem; margin-left: 0.6rem; } .herd .sil-billy { height: 2.3rem; } .herd .sil-doe { height: 2.2rem; }
   .herd .sil-sheep { height: 1.8rem; } .herd .sil-hen { height: 1.5rem; } .herd .sil-rooster { height: 1.6rem; }
+  .herd .sil-saguaro { height: 4.6rem; }
 }
 .ridge { position: absolute; bottom: 100%; left: 0; width: 100%; height: 3.5rem; fill: var(--ink); display: block; }
 .footer-inner { max-width: var(--wrap); margin: 0 auto; padding: 2.5rem 1rem 1rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1.5rem 3rem; }
