@@ -301,8 +301,8 @@ def render_gampr_application():
   </fieldset>
 
   <fieldset><legend>2. AGCA membership and breeding plans</legend>
-    <p class="q">Are you a member of the Armenian Gampr Club of America?</p>
-    {radios("AGCA membership", ["Already a member", "Will join before pickup", "Not yet decided"])}
+    <p class="q">Are you a member of the Armenian Gampr Club of America? (Membership is required before pickup.)</p>
+    {radios("AGCA membership", ["Already a member", "Will join at least one week before pickup", "Not yet decided"])}
     <p class="q">What are you looking for?</p>
     {radios("Purpose", ["A working guardian or companion", "A dog with breeding rights", "Not sure yet"])}
     {area("Breeding plans", "If you plan to breed: are you prepared to complete Embark testing, an AGCA working and physical evaluation, and OFA hips, elbows and patella before any breeding? Tell us about your plans.", "Leave blank if you don't plan to breed", 3, False)}
