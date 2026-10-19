@@ -194,7 +194,7 @@ def dog_page(dog):
         ped_note = '<p class="ped-note">Her registration lists her parents only.</p>' if dog.get("sex") == "Female" \
             else '<p class="ped-note">His registration lists his parents only.</p>'
     body = f'''
-<nav class="crumbs" aria-label="Breadcrumb"><a href="{url("/gampr-puppies/")}">Gampr puppies</a> <span aria-hidden="true">/</span> {esc(name)}</nav>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="{url("/gampr-puppies/")}">Gamprs</a> <span aria-hidden="true">/</span> {esc(name)}</nav>
 <section class="page-head dog-head">
   <h1>{esc(name)}</h1>
   <p class="dog-regname">{esc(dog.get("registered_name"))}</p>
@@ -379,7 +379,8 @@ RENDERERS = {
 
 
 NAV = [
-    ("/gampr-puppies/", "Gampr puppies"),
+    ("/", "Home"),
+    ("/gampr-puppies/", "Gamprs"),
     ("/goats/", "Goats"),
     ("/sheep/", "Sheep"),
     ("/eggs/", "Eggs"),
