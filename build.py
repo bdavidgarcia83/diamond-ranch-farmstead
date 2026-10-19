@@ -248,7 +248,7 @@ def render_listing(key, empty_message, kind):
     return f'<ul class="animal-grid">{"".join(rows)}</ul>'
 
 
-def render_form(animal):
+def render_form(animal, hint="Acreage, livestock you need protected, fencing, experience with guardian dogs or goats, timing", ask="Tell us about your place and what you need"):
     return f'''
 <form class="inquiry" action="https://formsubmit.co/{esc(SITE['email'])}" method="POST">
   <input type="hidden" name="_subject" value="Website inquiry: {esc(animal)}">
@@ -262,8 +262,8 @@ def render_form(animal):
   </div>
   <label>Email<input name="email" type="email" required autocomplete="email"></label>
   <label>Where are you located?<input name="Location" placeholder="City and state"></label>
-  <label>Tell us about your place and what you need
-    <textarea name="Message" rows="5" required placeholder="Acreage, livestock you need protected, fencing, experience with guardian dogs or goats, timing"></textarea>
+  <label>{esc(ask)}
+    <textarea name="Message" rows="5" required placeholder="{esc(hint)}"></textarea>
   </label>
   <button type="submit">Send inquiry</button>
   <p class="form-note">We reply by email or phone.</p>
@@ -374,6 +374,7 @@ RENDERERS = {
     "form-goats": lambda: render_form("Nigerian Dwarf goats"),
     "form-sheep": lambda: render_form("Hair sheep"),
     "form-general": lambda: render_form("General question"),
+    "form-eggs": lambda: render_form("Delaware eggs", "Eating eggs or hatching eggs, how many dozen, and when you'd like them", "What would you like?"),
 }
 
 
@@ -381,6 +382,7 @@ NAV = [
     ("/gampr-puppies/", "Gampr puppies"),
     ("/goats/", "Goats"),
     ("/sheep/", "Sheep"),
+    ("/eggs/", "Eggs"),
     ("/ranch-life/", "Ranch life"),
     ("/about/", "About"),
     ("/contact/", "Contact"),
