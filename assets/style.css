@@ -342,3 +342,9 @@ mark.todo { background: #f3dfb6; color: var(--ink); padding: 0 0.2em; }
 .eggs-head img { width: 100%; height: auto; border-radius: 3px; }
 @media (max-width: 44rem) { .eggs-head { grid-template-columns: 1fr; gap: 1.25rem; } }
 .animal-row .sil-hen { width: 72%; justify-self: center; }
+.egg-price { font-family: var(--display); font-size: 2.2rem; color: var(--ochre); line-height: 1; margin: 0.25rem 0 0.75rem; }
+.egg-price span { font-family: var(--body); font-size: 1rem; color: var(--slate); }
+.ship-table { border-collapse: collapse; width: 100%; max-width: 40rem; margin: 1rem 0 0.5rem; }
+.ship-table th, .ship-table td { text-align: left; padding: 0.6rem 0.75rem 0.6rem 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.ship-table th { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+.ship-table td:last-child { white-space: nowrap; font-weight: 600; }

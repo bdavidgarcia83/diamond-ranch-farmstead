@@ -374,7 +374,7 @@ RENDERERS = {
     "form-goats": lambda: render_form("Nigerian Dwarf goats"),
     "form-sheep": lambda: render_form("Hair sheep"),
     "form-general": lambda: render_form("General question"),
-    "form-eggs": lambda: render_form("Delaware eggs", "Eating eggs or hatching eggs, how many dozen, and when you'd like them", "What would you like?"),
+    "form-eggs": lambda: render_form("Delaware eggs", "Eating eggs (pickup in Hereford) or hatching eggs (shipped), how many, your ZIP code for shipping, and when you'd like them", "What would you like?"),
 }
 
 
