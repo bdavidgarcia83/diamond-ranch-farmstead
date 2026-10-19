@@ -425,7 +425,11 @@ def layout(meta, body):
         "email": SITE["email"],
         "telephone": SITE["phone"],
         "address": {"@type": "PostalAddress", "addressLocality": "Hereford",
-                    "addressRegion": "AZ", "addressCountry": "US"},
+                    "addressRegion": "AZ", "postalCode": "85615", "addressCountry": "US"},
+        "areaServed": [{"@type": "AdministrativeArea", "name": n} for n in
+                       ["Cochise County, Arizona", "Sierra Vista, Arizona", "Bisbee, Arizona",
+                        "Tombstone, Arizona", "Benson, Arizona", "Tucson, Arizona",
+                        "Southeast Arizona", "Arizona"]],
         "logo": SITE["url"] + "/assets/img/logo-240.png",
         "image": SITE["url"] + "/assets/img/og-image.jpg",
         "sameAs": list(SITE["links"].values()),
@@ -480,7 +484,7 @@ def layout(meta, body):
     <div>
       <img class="footer-logo" src="{url("/assets/img/logo-240.webp")}" alt="Diamond Ranch Farmstead logo" width="240" height="240" loading="lazy">
       <p class="footer-name">Diamond Ranch Farmstead</p>
-      <p>{esc(SITE["owners"])}<br>Hereford, Arizona. Visits by appointment.</p>
+      <p>{esc(SITE["owners"])}<br>Hereford, Arizona, near Sierra Vista.<br>Serving southeast Arizona. Visits by appointment.</p>
     </div>
     <div>
       <p><a href="mailto:{esc(SITE["email"])}">{esc(SITE["email"])}</a><br>
@@ -490,6 +494,7 @@ def layout(meta, body):
       <li><a href="{esc(SITE["links"]["facebook"])}">Facebook</a></li>
       <li><a href="{esc(SITE["links"]["instagram"])}">Instagram</a></li>
       <li><a href="{esc(SITE["links"]["youtube"])}">YouTube</a></li>
+      <li><a href="{url("/gampr-guide/")}">Gampr guide</a></li>
       <li><a href="{esc(SITE["links"]["agca"])}">AGCA breeder profile</a></li>
       <li><a href="{url("/terms-conditions/")}">Sales terms</a></li>
     </ul>
