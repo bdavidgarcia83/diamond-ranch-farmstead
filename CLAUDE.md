@@ -8,5 +8,6 @@
 - Never state facts about the animals (sex, ages, prices, test results) the owners haven't given.
 - Design: colors come from the ranch logo (assets/img/logo-*.webp, source in Dropbox /Personal/Diamond Ranch Farmstead/Website/drflofo.jpg): sand bg, dark wood ink, rust accent. Rokkitt + Libre Franklin. Logo appears in header, hero, footer, favicon and og-image. Ranch silhouettes (assets/img/sil/, used as CSS masks via .sil classes) mark the home animal rows and walk along the footer ridge. Avoid cards/gradients.
 - Eggs page (/eggs/, in nav): Delaware chickens; eating eggs and fertilized Delaware hatching eggs, $7/dozen eating eggs (pickup only), $2.50/egg hatching eggs (shipped, buyer pays). Shipping table is USPS Priority Mail retail estimates (fall 2026); refresh when USPS changes rates. Photos in assets/img/chickens.
+- Sheep page (/sheep/): Dorper Katahdin cross (no set percentage), not for sale; keeping all ewe lambs to expand, rams raised for own use, ewes maybe in future (form collects interest). Photos in assets/img/sheep, video sheep-browse.mp4. The empty `sheep` list in animals.json is unused.
 - Ranch life page (/ranch-life/, in nav): guardians (Nilla, crossbred LGD, spayed), pets, horses and barn_cats in animals.json; photos and personality text still to come from the owners.
 - Commit as small, plainly described changes; push to `main` publishes.

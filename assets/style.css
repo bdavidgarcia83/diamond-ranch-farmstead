@@ -338,9 +338,9 @@ mark.todo { background: #f3dfb6; color: var(--ink); padding: 0 0.2em; }
 .copyright { max-width: var(--wrap); margin: 0 auto; padding: 1rem 1rem 2rem; font-size: 0.85rem; color: #b8a28c; }
 
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
-.eggs-head { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 2.5rem; align-items: center; }
-.eggs-head img { width: 100%; height: auto; border-radius: 3px; }
-@media (max-width: 44rem) { .eggs-head { grid-template-columns: 1fr; gap: 1.25rem; } }
+.eggs-head, .split-head { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 2.5rem; align-items: center; }
+.eggs-head img, .split-head img { width: 100%; height: auto; border-radius: 3px; }
+@media (max-width: 44rem) { .eggs-head, .split-head { grid-template-columns: 1fr; gap: 1.25rem; } }
 .animal-row .sil-hen { width: 72%; justify-self: center; }
 .egg-price { font-family: var(--display); font-size: 2.2rem; color: var(--ochre); line-height: 1; margin: 0.25rem 0 0.75rem; }
 .egg-price span { font-family: var(--body); font-size: 1rem; color: var(--slate); }

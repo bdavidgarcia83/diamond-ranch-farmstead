@@ -372,7 +372,7 @@ RENDERERS = {
         "Hair sheep"),
     "form-gampr": lambda: render_form("Gampr puppy"),
     "form-goats": lambda: render_form("Nigerian Dwarf goats"),
-    "form-sheep": lambda: render_form("Hair sheep"),
+    "form-sheep": lambda: render_form("Dorper Katahdin cross ewes (future)", "Your acreage, what you're looking for and roughly when", "Tell us what you're looking for"),
     "form-general": lambda: render_form("General question"),
     "form-eggs": lambda: render_form("Delaware eggs", "Eating eggs (pickup in Hereford) or hatching eggs (shipped), how many, your ZIP code for shipping, and when you'd like them", "What would you like?"),
 }
