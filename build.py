@@ -270,6 +270,74 @@ def render_form(animal, hint="Acreage, livestock you need protected, fencing, ex
 </form>'''
 
 
+def render_gampr_application():
+    def radios(name, opts):
+        return '<div class="choices">' + "".join(
+            f'<label class="choice"><input type="radio" name="{esc(name)}" value="{esc(o)}" required> {esc(o)}</label>'
+            for o in opts) + "</div>"
+    def area(name, label, hint="", rows=3, req=True):
+        return (f'<label>{esc(label)}<textarea name="{esc(name)}" rows="{rows}"'
+                f'{" required" if req else ""} placeholder="{esc(hint)}"></textarea></label>')
+    nxt = (SITE['preview_url'] if SITE.get('preview') else SITE['url']) + url('/thanks/')
+    return f"""
+<form class="inquiry application" action="https://formsubmit.co/{esc(SITE['email'])}" method="POST">
+  <input type="hidden" name="_subject" value="Gampr puppy application">
+  <input type="hidden" name="_next" value="{esc(nxt)}">
+  <input type="hidden" name="_template" value="table">
+  <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <p class="form-note">This is the same questionnaire we go through with every buyer. It takes about 10 minutes. We'll follow up by phone.</p>
+
+  <fieldset><legend>1. About you</legend>
+    <div class="field-row">
+      <label>Your name<input name="Name" required autocomplete="name"></label>
+      <label>Farm or ranch name<input name="Farm name"></label>
+    </div>
+    <div class="field-row">
+      <label>Email<input name="email" type="email" required autocomplete="email"></label>
+      <label>Phone<input name="Phone" type="tel" required autocomplete="tel"></label>
+    </div>
+    <label>City and state where the dog will live<input name="Location" required placeholder="City, state"></label>
+    {area("Other people on the application", "Anyone else on the application, such as a partner or co-breeder?", "Name, farm and location, and their role", 2, False)}
+  </fieldset>
+
+  <fieldset><legend>2. AGCA membership and breeding plans</legend>
+    <p class="q">Are you a member of the Armenian Gampr Club of America?</p>
+    {radios("AGCA membership", ["Already a member", "Will join before pickup", "Not yet decided"])}
+    <p class="q">What are you looking for?</p>
+    {radios("Purpose", ["A working guardian or companion", "A dog with breeding rights", "Not sure yet"])}
+    {area("Breeding plans", "If you plan to breed: are you prepared to complete Embark testing, an AGCA working and physical evaluation, and OFA hips, elbows and patella before any breeding? Tell us about your plans.", "Leave blank if you don't plan to breed", 3, False)}
+  </fieldset>
+
+  <fieldset><legend>3. Your place</legend>
+    {area("Livestock", "What livestock do you have now (type and roughly how many), and what do you plan to add?", "", 3)}
+    {area("Fencing", "Describe your fencing: height, material, perimeter and paddocks, and where animals are kept at night. Do you use a GPS collar or fence, and is it backup or primary?", "", 3)}
+    {area("Other dogs", "Other dogs on the property: breed, age, sex, spayed/neutered or intact, and their role.", "", 3)}
+    {area("First 30 days", "Where will the puppy sleep and spend its first 30 days? How will you introduce it to your stock, especially young or vulnerable animals?", "", 3)}
+    {area("Daily care", "Who is home during the day, and who will be the puppy's main handler?", "", 2)}
+  </fieldset>
+
+  <fieldset><legend>4. Training and care</legend>
+    {area("Training", "What training methods do you use?", "", 2)}
+    <label class="choice"><input type="checkbox" name="No e-collars or physical correction" value="Agreed" required> I won't use e-collars or physical correction, and I won't raise the puppy unsupervised as a "barn only" dog.</label>
+    <label>Veterinarian name and city<input name="Veterinarian" required></label>
+    <label class="choice"><input type="checkbox" name="Health updates" value="Agreed" required> I'll keep you informed of major health issues for the life of the dog.</label>
+  </fieldset>
+
+  <fieldset><legend>5. Pickup and timing</legend>
+    <label>When would you like to bring a puppy home?<input name="Timing" required placeholder="For example, spring 2027 litter"></label>
+    {area("Pickup", "Will you pick up in Hereford, AZ, or use a ground transporter? Name the transporter or meeting point if you know it.", "", 2)}
+    <label class="choice"><input type="checkbox" name="Transport" value="Understood" required> I understand I arrange and pay for ground transport and any health certificate or vet work a transporter requires. Diamond Ranch Farmstead does not fly dogs.</label>
+  </fieldset>
+
+  <fieldset><legend>6. Anything else</legend>
+    {area("Anything else", "Questions, concerns, or anything we should know?", "", 3, False)}
+  </fieldset>
+
+  <button type="submit">Send application</button>
+  <p class="form-note">Read our <a href="{url('/terms-conditions/')}">sales terms</a> before you apply. We reply by email or phone.</p>
+</form>"""
+
+
 def render_gallery():
     photos = DATA.get("past_litter_photos", [])
     if not photos:
@@ -370,7 +438,7 @@ RENDERERS = {
         "sheep",
         "No sheep are listed right now. Ask about upcoming lambs and we'll let you know what's coming.",
         "Hair sheep"),
-    "form-gampr": lambda: render_form("Gampr puppy"),
+    "form-gampr": render_gampr_application,
     "form-goats": lambda: render_form("Nigerian Dwarf goats"),
     "form-sheep": lambda: render_form("Dorper Katahdin cross ewes (future)", "Your acreage, what you're looking for and roughly when", "Tell us what you're looking for"),
     "form-general": lambda: render_form("General question"),
