@@ -442,7 +442,7 @@ RENDERERS = {
     "form-goats": lambda: render_form("Nigerian Dwarf goats"),
     "form-sheep": lambda: render_form("Dorper Katahdin cross ewes (future)", "Your acreage, what you're looking for and roughly when", "Tell us what you're looking for"),
     "form-general": lambda: render_form("General question"),
-    "form-eggs": lambda: render_form("Delaware eggs", "Eating eggs (pickup in Hereford) or hatching eggs (shipped), how many, your ZIP code for shipping, and when you'd like them", "What would you like?"),
+    "form-eggs": lambda: render_form("Delaware eggs (notify when available)", "Eating eggs (pickup in Hereford) or hatching eggs (shipped), roughly how many, and your ZIP code for shipping", "What would you like when eggs are available?"),
 }
 
 
@@ -451,7 +451,7 @@ NAV = [
     ("/gampr-puppies/", "Gamprs"),
     ("/goats/", "Goats"),
     ("/sheep/", "Sheep"),
-    ("/eggs/", "Eggs"),
+    ("/chickens/", "Chickens"),
     ("/ranch-life/", "Ranch life"),
     ("/about/", "About"),
     ("/contact/", "Contact"),
@@ -574,6 +574,9 @@ def layout(meta, body):
 '''
 
 
+REDIRECTS = {"/eggs/": "/chickens/"}
+
+
 def main():
     if OUT.exists():
         shutil.rmtree(OUT)
@@ -607,6 +610,14 @@ def main():
     (OUT / "robots.txt").write_text(robots)
     if not SITE.get("preview") and (ROOT / "CNAME").exists():
         shutil.copy(ROOT / "CNAME", OUT / "CNAME")
+    for old, new in REDIRECTS.items():
+        t = OUT / old.strip("/") / "index.html"
+        t.parent.mkdir(parents=True, exist_ok=True)
+        to = url(new)
+        t.write_text(f'<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">'
+                     f'<title>Moved</title><link rel="canonical" href="{SITE["url"]}{new}">'
+                     f'<meta http-equiv="refresh" content="0; url={to}"><meta name="robots" content="noindex"></head>'
+                     f'<body><p>This page moved to <a href="{to}">{to}</a>.</p></body></html>')
     (OUT / ".nojekyll").write_text("")
     print(f"Built {len(pages) + 1} pages into {OUT} (base: '{BASE}')")
 
