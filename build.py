@@ -324,7 +324,7 @@ def render_gampr_application():
   </fieldset>
 
   <fieldset><legend>5. Pickup and timing</legend>
-    <label>When would you like to bring a puppy home?<input name="Timing" required placeholder="For example, the December 2026 Dozer x Riley litter"></label>
+    <label>When would you like to bring a puppy home?<input name="Timing" required placeholder="For example, the January 2027 Dozer x Riley litter"></label>
     {area("Pickup", "Will you pick up in Hereford, AZ, or use a ground transporter? Name the transporter or meeting point if you know it.", "", 2)}
     <label class="choice"><input type="checkbox" name="Transport" value="Understood" required> I understand I arrange and pay for ground transport and any health certificate or vet work a transporter requires. Diamond Ranch Farmstead does not fly dogs.</label>
   </fieldset>
@@ -346,7 +346,7 @@ def render_gallery():
         f'<li><img src="{url("/assets/img/" + esc(p["photo"]))}" alt="{esc(p.get("alt"))}" '
         f'loading="lazy" width="900" height="675"></li>' for p in photos)
     return (f'<section class="band"><h2>Puppies from Riley\'s first litter</h2>'
-            f'<p>A few of the pups from Riley and Dozer\'s first litter, the same pairing as our litter expected December 15, 2026. <a href="{url("/dogs/riley/")}#litter">See videos of the litter on Riley\'s page</a>.</p>'
+            f'<p>A few of the pups from Riley and Dozer\'s first litter, the same pairing as our litter due January 14–15, 2027. <a href="{url("/dogs/riley/")}#litter">See videos of the litter on Riley\'s page</a>.</p>'
             f'<ul class="gallery">{items}</ul></section>')
 
 
@@ -366,7 +366,9 @@ def render_planned():
             f'<div class="planned-text"><h3>Upcoming litter: {esc(plan["sire"])} × {esc(plan["dam"])}</h3>{timing}{note}'
             f'<p>Meet both parents in Our breeding dogs below. Send an application to get on the waitlist for this litter, '
             f'and we\'ll contact you when puppies are on the way.</p>'
-            f'<p><a class="button" href="#apply">Join the waitlist</a></p></div></div>')
+            f'<p class="hero-actions"><a class="button" href="#apply">Join the waitlist</a>'
+            + (f' <a class="button button-quiet" href="{url("/litters/" + plan["slug"] + "/")}">Follow the litter</a>' if plan.get("slug") else "")
+            + '</p></div></div>')
     return "".join(blocks)
 
 
@@ -388,7 +390,8 @@ def render_home_next():
     timing = f' {esc(plan["timing"])}.' if plan.get("timing") else ""
     return (f'<p class="next-litter"><span class="sil sil-gampr" aria-hidden="true"></span>'
             f'<span>Next litter: <strong>{esc(plan["sire"])} × {esc(plan["dam"])}</strong>.{timing} '
-            f'<a href="{url("/gampr-puppies/")}#apply">Join the waitlist</a></span></p>')
+            + (f'<a href="{url("/litters/" + plan["slug"] + "/")}">Follow the litter</a> · ' if plan.get("slug") else "")
+            + f'<a href="{url("/gampr-puppies/")}#apply">Join the waitlist</a></span></p>')
 
 
 def render_pets(key="pets"):
@@ -574,6 +577,58 @@ def layout(meta, body):
 '''
 
 
+def litter_page(plan):
+    parents = {d["name"]: d for d in DATA.get("gampr_parents", [])}
+    pair = []
+    for role, key in (("Sire", "sire"), ("Dam", "dam")):
+        dog = parents.get(plan[key], {"name": plan[key]})
+        img = photo_or_mark(dog, dog["name"] + ", Armenian Gampr")
+        link = url("/dogs/" + dog["slug"] + "/") if dog.get("slug") else ""
+        cap = f'<strong>{esc(dog["name"])}</strong> {role}'
+        if link:
+            cap += f' · <a href="{link}">pedigree and health tests</a>'
+        pair.append(f'<figure>{img}<figcaption>{cap}</figcaption></figure>')
+    facts = []
+    for label, key in (("Bred", "bred"), ("Due", "due"), ("Puppies go home", "go_home")):
+        if plan.get(key):
+            facts.append(f'<div><dt>{label}</dt><dd>{esc(plan[key])}</dd></div>')
+    ups = sorted(plan.get("updates", []), key=lambda u: u["date"], reverse=True)
+    items = []
+    for u in ups:
+        dt = date.fromisoformat(u["date"])
+        nice = dt.strftime("%B %-d, %Y")
+        photos = "".join(f'<li><img src="{url("/assets/img/" + ph["photo"])}" alt="{esc(ph.get("alt",""))}" loading="lazy"></li>'
+                         for ph in u.get("photos", []))
+        photos = f'<ul class="gallery">{photos}</ul>' if photos else ""
+        items.append(f'<li><time datetime="{u["date"]}">{nice}</time><h3>{esc(u["title"])}</h3>'
+                     f'<p>{esc(u["text"])}</p>{photos}{render_videos(u.get("videos"))}</li>')
+    title = f'{plan["sire"]} × {plan["dam"]} Litter'
+    body = f"""
+<nav class="crumbs" aria-label="Breadcrumb"><a href="{url('/gampr-puppies/')}">Gamprs</a> <span aria-hidden="true">/</span> {esc(title)}</nav>
+<section class="page-head">
+  <h1>{esc(plan["sire"])} × {esc(plan["dam"])} litter</h1>
+  <p class="lede">Follow our next Armenian Gampr litter from breeding to go-home day. We add every milestone here as it happens.</p>
+</section>
+<section class="band">
+  <div class="planned"><div class="planned-pair">{pair[0]}<span class="planned-x" aria-hidden="true">×</span>{pair[1]}</div>
+  <div class="planned-text"><dl class="litter-facts">{"".join(facts)}</dl>
+  <p>$3,200 with breeding rights, or $2,500 as a working guardian or companion. A $500 non-refundable deposit reserves a puppy once your application is approved. See our <a href="{url('/terms-conditions/')}">sales terms</a>.</p>
+  <p class="hero-actions"><a class="button" href="{url('/gampr-puppies/')}#apply">Apply for a puppy</a></p></div></div>
+</section>
+<section class="band">
+  <h2>Litter updates</h2>
+  <ol class="litter-updates">{"".join(items)}</ol>
+</section>
+<section class="band">
+  <h2>From this pairing before</h2>
+  <p>Riley and Dozer's first litter was born December 18, 2025. <a href="{url('/dogs/riley/')}#litter">See videos and photos of those puppies on Riley's page</a>.</p>
+</section>"""
+    meta = {"title": f"{title}: Armenian Gampr Puppies Due January 2027 | Hereford AZ" if "January" in plan.get("due","") else f"{title} | Armenian Gampr Puppies",
+            "description": f"Updates on our {plan['sire']} × {plan['dam']} Armenian Gampr litter in Hereford, Arizona, near Sierra Vista. Bred {plan.get('bred','')}, due {plan.get('due','')}. Join the waitlist.",
+            "path": f"/litters/{plan['slug']}/", "section": "/gampr-puppies/"}
+    return meta, body
+
+
 REDIRECTS = {"/eggs/": "/chickens/"}
 
 
@@ -596,6 +651,14 @@ def main():
         target.write_text(page_html.replace('href=""', 'href="#"'))
     for dog in DATA.get("gampr_parents", []):
         meta, body = dog_page(dog)
+        target = OUT / meta["path"].strip("/") / "index.html"
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(layout(meta, body))
+        pages.append(meta["path"])
+    for plan in DATA.get("planned_litters", []):
+        if not plan.get("slug"):
+            continue
+        meta, body = litter_page(plan)
         target = OUT / meta["path"].strip("/") / "index.html"
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(layout(meta, body))
