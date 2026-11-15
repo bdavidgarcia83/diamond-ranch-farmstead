@@ -9,7 +9,7 @@
       "born": "2023-02-09",
       "reg": "020923-04",
       "bred_by": "Judy Simmons",
-      "summary": "Dozer is the dominant male in our pack, never aggressive, and a big puppy at heart. He's OFA CHIC certified and Embark tested, and he's the sire of our planned spring 2027 litter with Riley.",
+      "summary": "Dozer is the dominant male in our pack, never aggressive, and a big puppy at heart. He's OFA CHIC certified and Embark tested, and he's the sire of our litter with Riley expected December 15, 2026 with Riley.",
       "health": "OFA CHIC certified · Embark tested",
       "embark": "https://my.embarkvet.com/dog/dozer1054",
       "ofa": "https://ofa.org/advanced-search/?appnum=2606898",
@@ -111,7 +111,7 @@
       "born": "2021-07-31",
       "reg": "073121-09",
       "bred_by": "Tribble Hill Farm",
-      "summary": "Riley is our oldest Gampr and the monarch of the property. She's OFA CHIC certified and Embark tested, and she's the dam of our planned spring 2027 litter with Dozer.",
+      "summary": "Riley is our oldest Gampr and the monarch of the property. She's OFA CHIC certified and Embark tested, and she's the dam of our litter with Dozer expected December 15, 2026.",
       "health": "OFA CHIC certified · Embark tested",
       "embark": "https://my.embarkvet.com/dog/riley5908",
       "ofa": "https://ofa.org/advanced-search/?appnum=2487034",
@@ -488,8 +488,8 @@
     {
       "sire": "Dozer",
       "dam": "Riley",
-      "timing": "Expected spring 2027",
-      "note": ""
+      "timing": "Expected December 15, 2026",
+      "note": "Puppies go home at 8 weeks, around mid-February 2027. Apply now to join the waitlist."
     }
   ],
   "past_litter_photos": [

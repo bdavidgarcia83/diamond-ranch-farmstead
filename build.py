@@ -324,7 +324,7 @@ def render_gampr_application():
   </fieldset>
 
   <fieldset><legend>5. Pickup and timing</legend>
-    <label>When would you like to bring a puppy home?<input name="Timing" required placeholder="For example, spring 2027 litter"></label>
+    <label>When would you like to bring a puppy home?<input name="Timing" required placeholder="For example, the December 2026 Dozer x Riley litter"></label>
     {area("Pickup", "Will you pick up in Hereford, AZ, or use a ground transporter? Name the transporter or meeting point if you know it.", "", 2)}
     <label class="choice"><input type="checkbox" name="Transport" value="Understood" required> I understand I arrange and pay for ground transport and any health certificate or vet work a transporter requires. Diamond Ranch Farmstead does not fly dogs.</label>
   </fieldset>
@@ -346,7 +346,7 @@ def render_gallery():
         f'<li><img src="{url("/assets/img/" + esc(p["photo"]))}" alt="{esc(p.get("alt"))}" '
         f'loading="lazy" width="900" height="675"></li>' for p in photos)
     return (f'<section class="band"><h2>Puppies from Riley\'s first litter</h2>'
-            f'<p>A few of the pups from Riley and Dozer\'s first litter, the same pairing planned for spring 2027. <a href="{url("/dogs/riley/")}#litter">See videos of the litter on Riley\'s page</a>.</p>'
+            f'<p>A few of the pups from Riley and Dozer\'s first litter, the same pairing as our litter expected December 15, 2026. <a href="{url("/dogs/riley/")}#litter">See videos of the litter on Riley\'s page</a>.</p>'
             f'<ul class="gallery">{items}</ul></section>')
 
 
@@ -363,7 +363,7 @@ def render_planned():
         note = f'<p>{esc(plan["note"])}</p>' if plan.get("note") else ""
         blocks.append(
             f'<div class="planned"><div class="planned-pair">{pair[0]}<span class="planned-x" aria-hidden="true">×</span>{pair[1]}</div>'
-            f'<div class="planned-text"><h3>Planned litter: {esc(plan["sire"])} × {esc(plan["dam"])}</h3>{timing}{note}'
+            f'<div class="planned-text"><h3>Upcoming litter: {esc(plan["sire"])} × {esc(plan["dam"])}</h3>{timing}{note}'
             f'<p>Meet both parents in Our breeding dogs below. Send an application to get on the waitlist for this litter, '
             f'and we\'ll contact you when puppies are on the way.</p>'
             f'<p><a class="button" href="#apply">Join the waitlist</a></p></div></div>')
@@ -387,7 +387,7 @@ def render_home_next():
     plan = plans[0]
     timing = f' {esc(plan["timing"])}.' if plan.get("timing") else ""
     return (f'<p class="next-litter"><span class="sil sil-gampr" aria-hidden="true"></span>'
-            f'<span>Next planned litter: <strong>{esc(plan["sire"])} × {esc(plan["dam"])}</strong>.{timing} '
+            f'<span>Next litter: <strong>{esc(plan["sire"])} × {esc(plan["dam"])}</strong>.{timing} '
             f'<a href="{url("/gampr-puppies/")}#apply">Join the waitlist</a></span></p>')
 
 
