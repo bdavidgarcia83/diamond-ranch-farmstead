@@ -366,3 +366,13 @@ mark.todo { background: #f3dfb6; color: var(--ink); padding: 0 0.2em; }
 .litter-updates time { font-size: 0.85rem; font-weight: 600; color: var(--muted); }
 .litter-updates h3 { margin: 0.2rem 0 0.3rem; }
 @media (max-width: 44rem) { .litter-facts div { grid-template-columns: 1fr; gap: 0; } }
+.cat-feature { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 1.5rem 2rem; align-items: center; margin-top: 1rem; }
+.cat-feature img { width: 100%; height: auto; border-radius: 3px; display: block; }
+.cat-feature h3 { margin-top: 0; }
+@media (max-width: 44rem) { .cat-feature { grid-template-columns: 1fr; } }
+.gallery .caption { margin: 0.4rem 0 0; font-size: 0.95rem; color: var(--muted); }
+.evidence { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0 1.5rem; }
+.evidence figure { margin: 0; }
+.evidence img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 3px; display: block; }
+.evidence figcaption { margin-top: 0.4rem; font-size: 0.95rem; color: var(--muted); }
+@media (max-width: 44rem) { .evidence { grid-template-columns: 1fr; } }
