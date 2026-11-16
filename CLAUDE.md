@@ -12,6 +12,6 @@
 - Gampr puppy application (render_gampr_application) mirrors the owners placement questionnaire, minus names, prices and payment. AGCA lists us as Breeder of Merit.
 - SEO: every page names the area (Hereford, near Sierra Vista; ~90 min from Tucson; southeast Arizona). LocalBusiness schema has areaServed. /gampr-guide/ is the breed guide (FAQ schema, linked from Gamprs page, home row and footer); keep breed facts sourced (IKU 2011 national dog, Armenian standard sizes).
 - Socials are all named Diamond Ranch Farmstead now (not Garcia Roots & Roam).
-- Momma Kitty page (/ranch-life/momma-kitty/, linked from Ranch life's barn cats section): tabby barn cat, professional mouser, retired from litters; comical tone approved by owners. Photos: headbump = Moxie (10 mo, Riley x Dozer first litter), nap = Dozer, video = Toros.
+- Momma Kitty page (/ranch-life/momma-kitty/, linked from Ranch life's barn cats section): tabby barn cat, professional mouser, retired from litters; comical tone approved by owners. Photos: top = Dozer, headbump = Moxie (10 mo, Riley x Dozer first litter), nap = Dozer, video = Toros.
 - Ranch life page (/ranch-life/, in nav): guardians (Nilla, crossbred LGD, spayed), pets, horses and barn_cats in animals.json; photos and personality text still to come from the owners.
 - Commit as small, plainly described changes; push to `main` publishes.
